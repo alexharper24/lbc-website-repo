@@ -13,8 +13,7 @@ change all, then grep to confirm).
 `index.html`, `im-new.html`, `beliefs.html`, `gospel.html`, `ministries.html`,
 `sermons.html`, `events.html`, `contact.html`, plus `404.html` (old Tithe.ly URLs like
 `/about/our-beliefs` will 404 after cutover; the 404 page routes people to the right
-place). `hero-options.html` is a preview page for choosing the hero treatment and gets
-deleted after the choice is made.
+place). The `hero-options.html` preview page was deleted once the hero was chosen.
 
 ## Design decisions (do not "fix" these back)
 
@@ -25,13 +24,22 @@ deleted after the choice is made.
   tint `--accent-sky-light: #8fd3f0` (5.17:1 PASS). Pure `#42a6d7` is reserved for
   large graphics only: wave rules, the service-band top edge, icon fills. See the
   header comment in `style.css`.
-- **Hero is a full-bleed photo with the headline overlaid**, gradient weighted to the
-  left. This is deliberate: centered text lands directly on the congregation's faces
-  in both available photos, so the left-weighted overlay keeps the choir, pulpit, and
-  cross visible right of center. Measured contrast over the composited photo plus
-  overlay: headline 7.14:1, tagline 8.18:1, eyebrow 5.17:1 at 1280px; all higher at
-  375px where the gradient goes vertical. **Re-measure these if the hero photo is
-  swapped** — the numbers depend on the photo's pixels, not just the CSS.
+- **Hero is a full-bleed photo with the headline centered over it**, using an even
+  top-to-bottom navy overlay (`0.78` to `0.86` alpha, `0.82` to `0.90` on mobile).
+  Those alphas are set from measured contrast against this photo's pixels, not picked
+  by eye: the bright ceiling, walls, and stage lights sit directly behind the centered
+  text. Measured worst case over the composited photo plus overlay:
+
+  | | 375px | 1280px | 1600px | needs |
+  |---|---|---|---|---|
+  | Headline | 10.40:1 | 9.49:1 | 9.43:1 | 3.0:1 |
+  | Tagline | 10.98:1 | 10.61:1 | 10.15:1 | 4.5:1 |
+  | Eyebrow label | 6.16:1 | 5.86:1 | 6.39:1 | 4.5:1 |
+
+  **Re-measure if the hero photo is swapped.** The numbers depend on the photo's
+  pixels, not just the CSS, and the eyebrow label is the tightest of the three. The
+  method is in the skill's `design-system.md` (canvas composite of photo plus the live
+  computed gradient, sampled across each text element's real bounding box).
 - **The service-times band is light (sea-mist with a sky-blue top edge), not navy.**
   With a dark hero directly above it, two adjacent navy blocks read as one mass. The
   hero is now the page's single dominant dark moment above the fold; the footer is the
@@ -88,9 +96,9 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 4. **Fresh photos**: both site photos are Feb 2020 phone shots of the sanctuary. Need a
    building exterior, the sign, and anything current. Hero Option C is the fallback if
    photos stay weak.
-5. **Hero variant**: full-bleed photo with overlaid text is chosen. `hero-options.html`
-   now offers the three remaining variants (choir photo left-aligned = shipped, pulpit
-   photo left-aligned, or centered text). Pick one, then delete that page.
+5. ~~Hero variant~~ **Done.** Full-bleed choir photo, centered text, even overlay.
+   Preview page deleted. Swapping the photo means re-running the contrast measurement
+   above.
 6. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm with the
    church whether the retreat still needs a page (currently dropped).
 7. **Staff confirmation**: old site listed Pastor Hon + Amber Biven (Admin). Team page

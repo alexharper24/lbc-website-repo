@@ -1,4 +1,3 @@
 {
-  "expect_domain": "www.lbc-marion.org",
-  "ignore_files": ["hero-options.html"]
+  "expect_domain": "www.lbc-marion.org"
 }
