@@ -1,0 +1,7 @@
+# Raw source media (phone originals, uncompressed photos). Only the
+# web-optimized derivatives in img/ are committed.
+source-media/
+
+# OS noise
+Thumbs.db
+.DS_Store
