@@ -13,6 +13,9 @@
   --primary-dark: #012d5e;
   --accent: #2b7cab;
   --accent-sky: #42a6d7;
+  /* sky blue is too dark to read as small text on the navy hero overlay (3.11:1),
+     so text-on-dark uses this lighter tint of the same hue (5.23:1). */
+  --accent-sky-light: #8fd3f0;
   --base-tint: #f2f6f9;
   --text: #2d2d2d;
   --text-light: #5a5a5a;
@@ -77,6 +80,8 @@ a { color: var(--accent); }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-light { background: #fff; color: var(--primary); border-color: #fff; }
 .btn-light:hover { background: var(--base-tint); border-color: var(--base-tint); }
+.btn-outline-light { background: transparent; color: #fff; border-color: #fff; }
+.btn-outline-light:hover { background: #fff; color: var(--primary); }
 
 /* ---------- header / nav ---------- */
 
@@ -121,43 +126,54 @@ a { color: var(--accent); }
   border-color: #fff; min-width: 200px; align-self: flex-start;
 }
 
-/* ---------- hero (split) ---------- */
+/* ---------- hero (full-bleed photo, text overlaid) ----------
+   The gradient is weighted to the left so the headline sits on deep navy while
+   the photo's subject (choir, pulpit, cross) stays visible right of center.
+   Centered text would land directly on the congregation's faces. */
 
-.hero-split { background: var(--white); }
-.hero-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
-  max-width: 1240px; margin: 0 auto; padding: 56px 24px 64px;
+.hero-full {
+  position: relative; display: flex; align-items: center;
+  min-height: 580px; background: var(--primary); overflow: hidden;
 }
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 45%;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg,
+    rgba(1, 30, 62, 0.92) 0%,
+    rgba(1, 34, 70, 0.82) 38%,
+    rgba(2, 55, 115, 0.55) 68%,
+    rgba(2, 63, 131, 0.34) 100%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 1240px; margin: 0 auto; width: 100%; padding: 72px 24px;
+}
+.hero-copy { max-width: 34em; }
 .hero-town {
-  color: var(--accent); font-weight: 600; letter-spacing: 0.08em;
+  color: var(--accent-sky-light); font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px;
 }
-.hero-copy h1 { font-size: 2.9rem; margin-bottom: 6px; }
-.hero-tagline { font-size: 1.2rem; color: var(--text-light); margin: 14px 0 26px; max-width: 32em; }
+.hero-copy h1 { font-size: 3.1rem; margin-bottom: 6px; color: #fff; }
+.hero-tagline {
+  font-size: 1.2rem; color: rgba(255, 255, 255, 0.92); margin: 14px 0 28px; max-width: 30em;
+}
 .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
 
-.hero-photo { position: relative; }
-.hero-photo img {
-  width: 100%; height: 420px; object-fit: cover;
-  border-radius: var(--radius); box-shadow: var(--shadow-lg);
-}
-/* sky wave band tucked behind the photo, echoing the logo base */
-.hero-photo::before {
-  content: ""; position: absolute; left: -18px; right: 40%; bottom: -18px; height: 90px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='90' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath d='M0 55 Q50 25 100 55 T200 55 T300 55 T400 55 L400 90 L0 90 Z' fill='%2342a6d7'/%3E%3C/svg%3E") no-repeat center / cover;
-  border-radius: var(--radius); z-index: -1; opacity: 0.9;
-}
+/* ---------- service times band ---------- */
 
-/* ---------- service times band (protected dark section) ---------- */
-
-.service-band { background: var(--primary); padding: 26px 0; }
+.service-band {
+  background: var(--base-tint); padding: 26px 0; border-top: 4px solid var(--accent-sky);
+}
 .service-band-inner {
   display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
   text-align: center;
 }
-.service-band .svc { color: #fff; }
+.service-band .svc { color: var(--primary); }
 .service-band .svc strong { display: block; font-family: var(--font-head); font-size: 1.05rem; }
-.service-band .svc span { font-size: 0.95rem; opacity: 0.85; }
+.service-band .svc span { font-size: 0.95rem; color: var(--text-light); }
 
 /* ---------- welcome ---------- */
 
@@ -372,9 +388,17 @@ a { color: var(--accent); }
 @media (max-width: 900px) {
   .main-nav { display: none; }
   .nav-toggle { display: block; }
-  .hero-grid { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px 48px; }
+  .hero-full { min-height: 470px; }
+  .hero-content { padding: 52px 24px; }
   .hero-copy h1 { font-size: 2.2rem; }
-  .hero-photo img { height: 300px; }
+  /* on a narrow screen there is no room beside the text, so darken vertically */
+  .hero-overlay {
+    background: linear-gradient(to bottom,
+      rgba(1, 30, 62, 0.80) 0%,
+      rgba(1, 32, 66, 0.88) 60%,
+      rgba(1, 30, 62, 0.92) 100%);
+  }
+  .hero-bg { object-position: center 40%; }
   .two-col, .schedule-grid, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
   .pastor-grid { grid-template-columns: 1fr; }
   .pastor-photo { max-width: 340px; }
@@ -408,10 +432,11 @@ a { color: var(--accent); }
   .card, .visit-box, .belief-section, .gospel-section, .sched-item,
   .calendar-embed, #comingSoonModal .modal-box { background-color: #ffffff !important; }
   .site-header { background-color: #ffffff !important; }
-  .hero-split { background-color: #ffffff !important; }
+  .service-band { background-color: var(--base-tint) !important; }
   .contact-form input, .contact-form textarea { background-color: #ffffff !important; color: var(--text) !important; }
   /* intentionally dark elements keep their brand color */
-  .service-band, .page-hero, .gospel-cta { background-color: var(--primary) !important; }
+  .hero-full, .page-hero, .gospel-cta { background-color: var(--primary) !important; }
+  .hero-overlay { background-image: linear-gradient(100deg, rgba(1,30,62,0.92) 0%, rgba(1,34,70,0.82) 38%, rgba(2,55,115,0.55) 68%, rgba(2,63,131,0.34) 100%) !important; }
   .site-footer { background-color: var(--primary-dark) !important; }
   .mobile-nav { background-color: var(--primary) !important; }
   .card-icon, .gi-navy { background-color: var(--primary) !important; }

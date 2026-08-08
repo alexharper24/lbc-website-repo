@@ -11,67 +11,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=2">
 <style>
   .option-label {
     background: #1c1c1c; color: #fff; padding: 14px 24px;
     font-family: var(--font-body); font-size: 0.95rem;
   }
   .option-label strong { color: #7fd0f5; }
-  .hero-photo-left .hero-grid { direction: rtl; }
-  .hero-photo-left .hero-grid > * { direction: ltr; }
-  .hero-brand-panel { background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%); }
-  .hero-brand-panel .hero-town { color: var(--accent-sky); }
-  .hero-brand-panel h1 { color: #fff; }
-  .hero-brand-panel .hero-tagline { color: rgba(255,255,255,0.85); }
+  /* variant: centered text needs an even overlay instead of a left-weighted one */
+  .hero-centered .hero-content { text-align: center; }
+  .hero-centered .hero-copy { max-width: 30em; margin: 0 auto; }
+  .hero-centered .wave-rule { margin-left: auto; margin-right: auto; }
+  .hero-centered .hero-buttons { justify-content: center; }
+  .hero-centered .hero-overlay {
+    background: linear-gradient(to bottom, rgba(1,30,62,0.72) 0%, rgba(1,32,66,0.82) 100%);
+  }
 </style>
 </head>
 <body>
 
-<div class="option-label"><strong>OPTION A (recommended, currently on index.html)</strong> — copy left, photo right with a sky wave band tucked behind the photo corner.</div>
+<div class="option-label"><strong>OPTION 1 (shipped on index.html)</strong> — choir and congregation photo, headline overlaid on the left. The navy gradient is heaviest on the left so the text sits on solid color while the choir, pulpit, and cross stay visible on the right.</div>
 
-<section class="hero-split">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="hero-town">Marion, Indiana</p>
-      <h1>Lighthouse Baptist Church</h1>
-      <span class="wave-rule wave-rule-left"></span>
-      <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#">Plan Your Visit</a>
-        <a class="btn btn-outline" href="#">What We Believe</a>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <img src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service" width="1400" height="1050">
-    </div>
-  </div>
-</section>
-
-<div class="option-label"><strong>OPTION B</strong> — mirrored: photo left, copy right. Same pieces, more editorial feel.</div>
-
-<section class="hero-split hero-photo-left">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="hero-town">Marion, Indiana</p>
-      <h1>Lighthouse Baptist Church</h1>
-      <span class="wave-rule wave-rule-left"></span>
-      <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#">Plan Your Visit</a>
-        <a class="btn btn-outline" href="#">What We Believe</a>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <img src="img/sanctuary-pulpit.jpg" alt="Pastor Hon preaching from the pulpit" width="1400" height="1050">
-    </div>
-  </div>
-</section>
-
-<div class="option-label"><strong>OPTION C</strong> — navy brand panel: white headline on a navy gradient with the photo as the right panel. Boldest of the three; leans on the brand while the photos are dated, and gets stronger when fresh photos arrive.</div>
-
-<section class="hero-split hero-brand-panel">
-  <div class="hero-grid">
+<section class="hero-full">
+  <img class="hero-bg" src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service" width="1400" height="1050">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <div class="hero-copy">
       <p class="hero-town">Marion, Indiana</p>
       <h1>Lighthouse Baptist Church</h1>
@@ -79,16 +43,51 @@
       <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
       <div class="hero-buttons">
         <a class="btn btn-light" href="#">Plan Your Visit</a>
-        <a class="btn btn-light" href="#">What We Believe</a>
+        <a class="btn btn-outline-light" href="#">What We Believe</a>
       </div>
-    </div>
-    <div class="hero-photo">
-      <img src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service" width="1400" height="1050">
     </div>
   </div>
 </section>
 
-<div class="option-label">Pick one and this page gets deleted. Option A ships on index.html until you say otherwise.</div>
+<div class="option-label"><strong>OPTION 2</strong> — same layout, the other photo: Pastor Hon preaching, with the choir on the left and the cross behind him. Puts the preaching front and center instead of the congregation.</div>
+
+<section class="hero-full">
+  <img class="hero-bg" src="img/sanctuary-pulpit.jpg" alt="Pastor Hon preaching from the pulpit" width="1400" height="1050">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-copy">
+      <p class="hero-town">Marion, Indiana</p>
+      <h1>Lighthouse Baptist Church</h1>
+      <span class="wave-rule wave-rule-left"></span>
+      <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-light" href="#">Plan Your Visit</a>
+        <a class="btn btn-outline-light" href="#">What We Believe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="option-label"><strong>OPTION 3</strong> — centered headline with an even overlay across the whole photo. More traditional and symmetrical. The trade-off: the text lands on top of the people in the frame, so the photo reads more as texture than as a picture of the church.</div>
+
+<section class="hero-full hero-centered">
+  <img class="hero-bg" src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service" width="1400" height="1050">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-copy">
+      <p class="hero-town">Marion, Indiana</p>
+      <h1>Lighthouse Baptist Church</h1>
+      <span class="wave-rule"></span>
+      <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-light" href="#">Plan Your Visit</a>
+        <a class="btn btn-outline-light" href="#">What We Believe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="option-label">Option 1 ships on index.html until you say otherwise. Once you pick, this page gets deleted. All three get stronger with a fresh exterior or full-sanctuary photo.</div>
 
 </body>
 </html>

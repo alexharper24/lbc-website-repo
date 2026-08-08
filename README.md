@@ -18,10 +18,24 @@ deleted after the choice is made.
 
 ## Design decisions (do not "fix" these back)
 
-- **Accent color departure:** the logo's sky blue `#42a6d7` fails WCAG AA on white
-  (2.74:1), so text-level accents use harbor blue `#2b7cab` (4.59:1 PASS). Pure sky
-  blue appears only in large graphics (wave rules, wave band, icon fills). See the
+- **Accent color departures (two of them, both measured):** the logo's sky blue
+  `#42a6d7` fails WCAG AA on white (2.74:1), so text-level accents on light
+  backgrounds use harbor blue `#2b7cab` (4.59:1 PASS). The same sky blue also fails
+  as small text *on the navy hero overlay* (3.11:1), so text on dark uses the lighter
+  tint `--accent-sky-light: #8fd3f0` (5.17:1 PASS). Pure `#42a6d7` is reserved for
+  large graphics only: wave rules, the service-band top edge, icon fills. See the
   header comment in `style.css`.
+- **Hero is a full-bleed photo with the headline overlaid**, gradient weighted to the
+  left. This is deliberate: centered text lands directly on the congregation's faces
+  in both available photos, so the left-weighted overlay keeps the choir, pulpit, and
+  cross visible right of center. Measured contrast over the composited photo plus
+  overlay: headline 7.14:1, tagline 8.18:1, eyebrow 5.17:1 at 1280px; all higher at
+  375px where the gradient goes vertical. **Re-measure these if the hero photo is
+  swapped** — the numbers depend on the photo's pixels, not just the CSS.
+- **The service-times band is light (sea-mist with a sky-blue top edge), not navy.**
+  With a dark hero directly above it, two adjacent navy blocks read as one mass. The
+  hero is now the page's single dominant dark moment above the fold; the footer is the
+  other dark anchor. Rhythm is still "banded."
 - **Doctrinal statement is verbatim** from the old site (including the "Section 1.02"
   and "(K)(1)" internal references, which come from the church's constitution). Do not
   edit, soften, or paraphrase any of it without the church's written say-so. Only
@@ -74,7 +88,9 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 4. **Fresh photos**: both site photos are Feb 2020 phone shots of the sanctuary. Need a
    building exterior, the sign, and anything current. Hero Option C is the fallback if
    photos stay weak.
-5. **Hero choice**: Alex to pick A/B/C on `hero-options.html`, then delete that page.
+5. **Hero variant**: full-bleed photo with overlaid text is chosen. `hero-options.html`
+   now offers the three remaining variants (choir photo left-aligned = shipped, pulpit
+   photo left-aligned, or centered text). Pick one, then delete that page.
 6. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm with the
    church whether the retreat still needs a page (currently dropped).
 7. **Staff confirmation**: old site listed Pastor Hon + Amber Biven (Admin). Team page

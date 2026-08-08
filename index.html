@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="preload" as="image" href="img/sanctuary-choir.jpg" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -70,20 +71,19 @@
 
 <main>
 
-<section class="hero-split">
-  <div class="hero-grid">
+<section class="hero-full">
+  <img class="hero-bg" src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service at Lighthouse Baptist Church" width="1400" height="1050" fetchpriority="high">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <div class="hero-copy">
       <p class="hero-town">Marion, Indiana</p>
       <h1>Lighthouse Baptist Church</h1>
       <span class="wave-rule wave-rule-left"></span>
       <p class="hero-tagline">We can't wait to meet you! We would love to see you, your family, and your friends this Sunday.</p>
       <div class="hero-buttons">
-        <a class="btn btn-primary" href="im-new.html">Plan Your Visit</a>
-        <a class="btn btn-outline" href="beliefs.html">What We Believe</a>
+        <a class="btn btn-light" href="im-new.html">Plan Your Visit</a>
+        <a class="btn btn-outline-light" href="beliefs.html">What We Believe</a>
       </div>
-    </div>
-    <div class="hero-photo">
-      <img src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service at Lighthouse Baptist Church" width="1400" height="1050">
     </div>
   </div>
 </section>
