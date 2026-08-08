@@ -176,10 +176,18 @@ a { color: var(--accent); }
 
 /* ---------- welcome ---------- */
 
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+/* Columns stretch to a shared height so the photo matches the text block beside it.
+   The image fills that box with object-fit: cover, so it scales up undistorted and
+   only trims its edges. The photo chosen here is close to the text block's own
+   aspect at this width, so the trim is a few pixels per side rather than a real crop.
+   Swapping in a much wider photo would start cutting into the subject. */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
 .two-col h2 { font-size: 2rem; margin-bottom: 8px; }
 .two-col p { margin-bottom: 14px; }
-.two-col img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; height: auto; }
+.two-col img {
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
 
 /* ---------- cards ---------- */
 
@@ -401,6 +409,18 @@ a { color: var(--accent); }
 
 /* ---------- responsive ---------- */
 
+/* Matching the photo's height to the text only looks right while both columns are
+   wide. Once the container stops being full width the text column goes tall and
+   narrow, and object-fit would trim the photo badly to keep up. Measured side trim:
+   3.3% at 1280px, 17.4% at 1024px, 32.7% at 901px. So below the point where the
+   1100px container is fully expanded, stack instead and show the photo whole. */
+@media (max-width: 1149px) {
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  /* natural shape, and capped so a full-width portrait-ish photo does not
+     become an 800px-tall wall between two blocks of text */
+  .two-col img { height: auto; max-width: 720px; margin-left: auto; margin-right: auto; }
+}
+
 @media (max-width: 900px) {
   .main-nav { display: none; }
   .nav-toggle { display: block; }
@@ -415,6 +435,8 @@ a { color: var(--accent); }
   }
   .hero-bg { object-position: center 40%; }
   .two-col, .schedule-grid, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
+  /* stacked: nothing to match heights with, so let the photo be its natural shape */
+  .two-col img { height: auto; }
   .pastor-grid { grid-template-columns: 1fr; gap: 24px; }
   .card-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
