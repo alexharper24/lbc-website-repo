@@ -23,11 +23,13 @@ function scrollToSection(sectionId) {
   window.scrollTo({ top: top, behavior: 'smooth' });
 }
 
-/* cross-page hash links (index.html#visit) land correctly on load */
+/* cross-page hash links (index.html#visit) land correctly on load. An accordion
+   target handles its own scrolling, so only fall back to the section scroll. */
 window.addEventListener('load', function () {
-  if (location.hash) {
-    setTimeout(function () { scrollToSection(location.hash.slice(1)); }, 60);
-  }
+  if (!location.hash) return;
+  setTimeout(function () {
+    if (!openAccordionFromHash()) scrollToSection(location.hash.slice(1));
+  }, 60);
 });
 
 /* ---------- expandable Scripture pills ---------- */
@@ -61,6 +63,50 @@ function toggleVerse(el) {
   el.classList.add('verse-active');
   el.setAttribute('aria-expanded', 'true');
 }
+
+/* ---------- accordions ---------- */
+
+function setAccordion(btn, open) {
+  var panel = document.getElementById(btn.getAttribute('aria-controls'));
+  if (!panel) return;
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  panel.hidden = !open;
+  var item = btn.closest('.acc-item');
+  if (item) item.classList.toggle('open', open);
+}
+
+function toggleAccordion(btn) {
+  setAccordion(btn, btn.getAttribute('aria-expanded') !== 'true');
+}
+
+/* one button that expands everything, then collapses everything */
+function toggleAllAccordions(control) {
+  var scope = control.closest('section') || document;
+  var btns = scope.querySelectorAll('.acc-btn');
+  var anyClosed = false;
+  btns.forEach(function (b) {
+    if (b.getAttribute('aria-expanded') !== 'true') anyClosed = true;
+  });
+  btns.forEach(function (b) { setAccordion(b, anyClosed); });
+  control.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+  control.setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
+}
+
+/* a link to #the-bible should open that section and scroll to it */
+function openAccordionFromHash() {
+  if (!location.hash) return false;
+  var item = document.getElementById(location.hash.slice(1));
+  if (!item || !item.classList.contains('acc-item')) return false;
+  var btn = item.querySelector('.acc-btn');
+  if (btn) setAccordion(btn, true);
+  var header = document.querySelector('.site-header');
+  var top = item.getBoundingClientRect().top + window.pageYOffset -
+            (header ? header.offsetHeight : 73) - 8;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+  return true;
+}
+
+window.addEventListener('hashchange', openAccordionFromHash);
 
 /* keyboard equivalent for the reference pills (they are spans, not buttons) */
 function verseKey(e, el) {

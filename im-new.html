@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -70,58 +70,133 @@
   <div class="container">
     <h1>Your First Visit</h1>
     <span class="wave-rule"></span>
-    <p>Visiting any church for the very first time can be a tough experience. We want to put you at ease so that your first visit to Lighthouse Baptist will be refreshing, friendly, and enjoyable for your whole family.</p>
+    <p>Visiting a church for the first time can be daunting. Here is exactly what to expect, so nothing is a surprise.</p>
   </div>
 </section>
 
+<section class="section section-alt">
+  <div class="container">
+    <div class="quick-grid">
+      <div class="quick-card fade-up">
+        <div class="quick-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
+        <h3>When to come</h3>
+        <p>Sunday at 11:00 am is our main service. Bible classes start at 10:00 am.</p>
+      </div>
+      <div class="quick-card fade-up">
+        <div class="quick-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.5 16 10 4 20"/><path d="M4 6h4l2-3h4l2 3h4v12H4z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+        <h3>How long</h3>
+        <p>The service runs a little over an hour, music followed by preaching.</p>
+      </div>
+      <div class="quick-card fade-up">
+        <div class="quick-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v6c0 4 3.5 7 8 8 4.5-1 8-4 8-8V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>What to wear</h3>
+        <p>Many dress up, but come as you are. We want you comfortable.</p>
+      </div>
+      <div class="quick-card fade-up">
+        <div class="quick-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.2"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3A4.5 4.5 0 0 1 15 18.5V20"/><path d="M17 14.5c2 0 4 1.3 4 3.5V20"/></svg></div>
+        <h3>Your kids</h3>
+        <p>Nursery at every service, plus classes for ages 3 through sixth grade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-band">
+  <img src="img/auditorium-2-sm.jpg" alt="The congregation gathered for a service at Lighthouse Baptist Church" width="700" height="433" loading="lazy">
+</div>
+
 <section class="section">
   <div class="container" style="max-width:820px;">
-    <p style="margin-bottom:28px;">We want you to experience inspiring music, helpful teaching and preaching, friendly people, and a place where you feel welcome and "at home"! Here are a few answers to questions that you may have, as well as what you might expect on your first visit.</p>
-
-    <div class="belief-section fade-up">
-      <h2>What can I expect on my first visit?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p>During our services you will enjoy the inspiring and uplifting music of the choir, ensembles, and soloists. The music is always followed by a clear, helpful, and challenging Bible message from our Pastor. This service is a little over one hour in length.</p>
-      <p>Also, during the 10:00 hour, there are Bible classes for adults in all stages of life. These classes are smaller group settings where you are invited to meet people, enjoy perhaps some coffee and donuts, and hear a teaching lesson more directly applicable to your life-stage. The best way to get to know people at Lighthouse Baptist Church is to visit one of these adult Bible classes.</p>
+    <div class="section-header">
+      <h2>Common Questions</h2>
+      <span class="wave-rule"></span>
     </div>
 
-    <div class="belief-section fade-up">
-      <h2>Where do I take my children?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p>Starting with excellent nurseries, there is something special for children of all ages. At every service there are safe, clean, and well-staffed nurseries for children 2 years old and under. For the infants, workers will take your cell phone number so that the nursery attendants can easily contact you if there is a need.</p>
-      <p>For children three years old through sixth grade there are fun, friendly, and Bible-centered classes. These classes are staffed with trained, friendly, and well-qualified teachers and helpers who will make church exciting and memorable for your child.</p>
-      <p>When you first arrive at LBC we would like to help you find the appropriate nurseries, classes, and services for every person in your family. Our greeters and ushers are located in the lobby of the main auditorium and will gladly help direct and even escort you to the right place.</p>
+    <div class="acc-controls">
+      <button type="button" class="acc-toggle-all" aria-expanded="false" onclick="toggleAllAccordions(this)">Expand all</button>
     </div>
 
-    <div class="belief-section fade-up">
-      <h2>How should I dress?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p>Our ministry leaders and many of our church family dress in more traditional "Sunday" dress; however, our main goal is that you would feel welcome and comfortable on your visit here at Lighthouse!</p>
+    <div class="belief-section acc-item fade-up" id="first-visit">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-first-visit" aria-expanded="false" aria-controls="panel-first-visit" onclick="toggleAccordion(this)">
+          <span>What can I expect on my first visit?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-first-visit" role="region" aria-labelledby="btn-first-visit" hidden>
+        <p>During our services you will enjoy the inspiring and uplifting music of the choir, ensembles, and soloists. The music is always followed by a clear, helpful, and challenging Bible message from our Pastor. This service is a little over one hour in length.</p>
+        <p>Also, during the 10:00 hour, there are Bible classes for adults in all stages of life. These classes are smaller group settings where you are invited to meet people, enjoy perhaps some coffee and donuts, and hear a teaching lesson more directly applicable to your life-stage. The best way to get to know people at Lighthouse Baptist Church is to visit one of these adult Bible classes.</p>
+      </div>
     </div>
 
-    <div class="belief-section fade-up">
-      <h2>Am I expected to participate in the offering?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p>No, we don't invite you to Lighthouse Baptist Church for your offering. We only want our service to be a help and a blessing to you. We hope you will find in this place a warm family spirit, truth from God's Word, and a place where you can grow in God's grace. Please don't feel any obligation to participate in the offering as a guest.</p>
+    <div class="belief-section acc-item fade-up" id="children">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-children" aria-expanded="false" aria-controls="panel-children" onclick="toggleAccordion(this)">
+          <span>Where do I take my children?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-children" role="region" aria-labelledby="btn-children" hidden>
+        <p>Starting with excellent nurseries, there is something special for children of all ages. At every service there are safe, clean, and well-staffed nurseries for children 2 years old and under. For the infants, workers will take your cell phone number so that the nursery attendants can easily contact you if there is a need.</p>
+        <p>For children three years old through sixth grade there are fun, friendly, and Bible-centered classes. These classes are staffed with trained, friendly, and well-qualified teachers and helpers who will make church exciting and memorable for your child.</p>
+        <p>When you first arrive at LBC we would like to help you find the appropriate nurseries, classes, and services for every person in your family. Our greeters and ushers are located in the lobby of the main auditorium and will gladly help direct and even escort you to the right place.</p>
+      </div>
     </div>
 
-    <div class="belief-section fade-up">
-      <h2>What time are services?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <ul>
-        <li>Sunday Adult and Children's Bible Classes: 10:00 am</li>
-        <li>Sunday Morning Service: 11:00 am</li>
-        <li>Sunday Evening Service: 6:00 pm (2:00 pm on the 5th Sunday of the month)</li>
-        <li>Wednesday Evening Bible Study: 7:00 pm</li>
-        <li>Wednesday Children's Program: 7:00 pm</li>
-      </ul>
+    <div class="belief-section acc-item fade-up" id="dress">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-dress" aria-expanded="false" aria-controls="panel-dress" onclick="toggleAccordion(this)">
+          <span>How should I dress?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-dress" role="region" aria-labelledby="btn-dress" hidden>
+        <p>Our ministry leaders and many of our church family dress in more traditional "Sunday" dress; however, our main goal is that you would feel welcome and comfortable on your visit here at Lighthouse!</p>
+      </div>
     </div>
 
-    <div class="belief-section fade-up">
-      <h2>Other questions?</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p>If there's something we missed on this list, just give us a call at <a href="tel:+17653847572">(765) 384-7572</a>, or ask someone when you arrive. Whether you're new to the area and looking for a church home, or if it's been a long time since you've attended church at all, we hope your first visit at Lighthouse Baptist will be awesome!</p>
-      <p>Our desire is to serve you and your family, and we are looking forward to meeting you personally. We hope you'll feel right at home from the very first moment you set foot in Lighthouse Baptist Church! Let us know how we can serve you better, and we hope to meet you this Sunday!</p>
+    <div class="belief-section acc-item fade-up" id="offering">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-offering" aria-expanded="false" aria-controls="panel-offering" onclick="toggleAccordion(this)">
+          <span>Am I expected to participate in the offering?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-offering" role="region" aria-labelledby="btn-offering" hidden>
+        <p>No, we don't invite you to Lighthouse Baptist Church for your offering. We only want our service to be a help and a blessing to you. We hope you will find in this place a warm family spirit, truth from God's Word, and a place where you can grow in God's grace. Please don't feel any obligation to participate in the offering as a guest.</p>
+      </div>
+    </div>
+
+    <div class="belief-section acc-item fade-up" id="service-times">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-service-times" aria-expanded="false" aria-controls="panel-service-times" onclick="toggleAccordion(this)">
+          <span>What time are services?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-service-times" role="region" aria-labelledby="btn-service-times" hidden>
+        <ul>
+          <li><strong>Sunday</strong> 10:00 am, Adult and Children's Bible Classes</li>
+          <li><strong>Sunday</strong> 11:00 am, Morning Service</li>
+          <li><strong>Sunday</strong> 6:00 pm, Evening Service</li>
+          <li><strong>Wednesday</strong> 7:00 pm, Bible Study</li>
+          <li><strong>Wednesday</strong> 7:00 pm, Children's Program</li>
+        </ul>
+        <p style="margin-top:12px;">The Sunday evening service moves to 2:00 pm on the 5th Sunday of the month.</p>
+      </div>
+    </div>
+
+    <div class="belief-section acc-item fade-up" id="other-questions">
+      <h2 class="acc-head">
+        <button type="button" class="acc-btn" id="btn-other-questions" aria-expanded="false" aria-controls="panel-other-questions" onclick="toggleAccordion(this)">
+          <span>Something else on your mind?</span>
+          <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </h2>
+      <div class="acc-panel" id="panel-other-questions" role="region" aria-labelledby="btn-other-questions" hidden>
+        <p>If there's something we missed, give us a call at <a href="tel:+17653847572">(765) 384-7572</a>, or ask someone when you arrive. Whether you're new to the area and looking for a church home, or it's been a long time since you attended church at all, we hope your first visit will be a good one.</p>
+        <p>Our desire is to serve you and your family, and we are looking forward to meeting you personally. Let us know how we can serve you better, and we hope to meet you this Sunday!</p>
+      </div>
     </div>
 
     <div style="text-align:center; margin-top:32px;">
@@ -149,7 +224,8 @@
           <li>Sunday 10:00 am, Bible Classes</li>
           <li>Sunday 11:00 am, Morning Service</li>
           <li>Sunday 6:00 pm, Evening Service</li>
-          <li>Wednesday 7:00 pm, Bible Study and Children's Program</li>
+          <li>Wednesday 7:00 pm, Bible Study</li>
+          <li>Wednesday 7:00 pm, Children's Program</li>
         </ul>
       </div>
       <div>
@@ -158,7 +234,7 @@
           <li>2445 W. Kem Road,<br>Marion, IN 46952</li>
           <li><a href="tel:+17653847572">(765) 384-7572</a></li>
           <li><a href="mailto:info@lbc-marion.org">info@lbc-marion.org</a></li>
-          <li>Office: Tuesday to Friday,<br>9:00 am to 4:00 pm</li>
+          <li>Office: Tue to Fri, 9 am to 4 pm</li>
         </ul>
       </div>
       <div>
@@ -217,6 +293,6 @@
 }
 </script>
 
-<script src="main.js?v=2"></script>
+<script src="main.js?v=3"></script>
 </body>
 </html>

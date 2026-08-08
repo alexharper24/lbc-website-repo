@@ -39,7 +39,16 @@ body {
   font-size: 17px;
 }
 
-h1, h2, h3, h4 { font-family: var(--font-head); color: var(--primary); line-height: 1.25; }
+h1, h2, h3, h4 {
+  font-family: var(--font-head); color: var(--primary); line-height: 1.25;
+  /* balance heading lines so a heading never drops a single word onto its own
+     line ("Welcome to Lighthouse Baptist / Church") */
+  text-wrap: balance;
+}
+
+/* avoid one-word last lines anywhere in body copy (inherited; the balance rule
+   above wins for headings) */
+body { text-wrap: pretty; }
 
 img { max-width: 100%; display: block; }
 
@@ -150,7 +159,9 @@ a { color: var(--accent); }
   position: relative; z-index: 1; text-align: center;
   max-width: 1240px; margin: 0 auto; width: 100%; padding: 72px 24px;
 }
-.hero-copy { max-width: 30em; margin: 0 auto; }
+/* wide enough that the church name sits on one line at desktop sizes;
+   the tagline is capped separately so it still reads as a short line */
+.hero-copy { max-width: 44em; margin: 0 auto; }
 .hero-town {
   color: var(--accent-sky-light); font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px;
@@ -299,6 +310,71 @@ a { color: var(--accent); }
   font-style: italic; margin: 3px 8px 3px 0;
 }
 
+/* ---------- accordion (beliefs doctrines, first-visit questions) ----------
+   Collapsed by default so a long page reads as a scannable list of topics.
+   Panels use the `hidden` attribute, so they still collapse if CSS fails and
+   there is no transition to measure mid-flight. */
+
+.acc-controls { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 14px; }
+.acc-toggle-all {
+  background: none; border: 1px solid #c9d6e2; border-radius: var(--radius);
+  color: var(--primary); font-family: var(--font-body); font-weight: 600;
+  font-size: 0.9rem; padding: 8px 16px; cursor: pointer;
+}
+.acc-toggle-all:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.acc-toggle-all:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: 2px; }
+
+.acc-item {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  margin-bottom: 12px; overflow: hidden;
+}
+.belief-section.acc-item { padding: 0; margin-bottom: 12px; }
+.acc-head { margin: 0; }
+.acc-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 18px 22px; background: none; border: none; cursor: pointer;
+  font-family: var(--font-head); font-size: 1.12rem; font-weight: 600;
+  color: var(--primary); text-align: left; line-height: 1.3;
+}
+.acc-btn:hover { background: var(--base-tint); }
+.acc-btn:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: -3px; }
+.acc-chevron { flex: 0 0 auto; stroke: var(--accent); transition: transform 0.2s; }
+.acc-item.open .acc-chevron { transform: rotate(180deg); }
+.acc-item.open .acc-btn { background: var(--base-tint); }
+.acc-panel { padding: 4px 22px 22px; }
+.acc-panel > *:first-child { margin-top: 0; }
+.acc-panel > *:last-child { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { .acc-chevron { transition: none; } }
+
+/* ---------- quick answer cards (scannable strip above long copy) ---------- */
+
+.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.quick-card {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 22px 20px; text-align: center;
+}
+.quick-icon {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--base-tint);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+}
+.quick-icon svg { stroke: var(--primary); }
+.quick-card h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.quick-card p { font-size: 0.94rem; color: var(--text-light); margin: 0; }
+
+/* ---------- ministry cards ---------- */
+
+.ministry-card h2 { font-size: 1.3rem; margin: 14px 0 10px; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.chip {
+  display: inline-block; background: var(--base-tint); color: var(--primary);
+  border-radius: 999px; padding: 4px 12px; font-size: 0.82rem; font-weight: 600;
+}
+
+/* ---------- photo band (breaks up a text-heavy page) ---------- */
+
+.photo-band { position: relative; height: 300px; overflow: hidden; }
+.photo-band img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+
 /* ---------- gospel ---------- */
 
 .gospel-section {
@@ -347,7 +423,9 @@ a { color: var(--accent); }
 
 /* ---------- contact ---------- */
 
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+/* the info column holds the longest strings (service times), so give it the
+   extra width rather than letting each line wrap for one trailing word */
+.contact-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
 .contact-form label { display: block; font-weight: 600; margin: 14px 0 5px; color: var(--primary); }
 .contact-form input, .contact-form textarea {
   width: 100%; padding: 11px 14px; border: 1px solid #c9d6e2; border-radius: var(--radius);
@@ -362,8 +440,11 @@ a { color: var(--accent); }
 /* ---------- footer ---------- */
 
 .site-footer { background: var(--primary-dark); color: rgba(255, 255, 255, 0.85); padding: 48px 0 0; }
+/* Column widths are set from measured line lengths, not eyeballed: the service
+   times and contact details are the longest strings and were each wrapping onto
+   a second line for one trailing word. */
 .footer-grid {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px;
+  display: grid; grid-template-columns: 1fr 1.25fr 1.1fr 0.72fr; gap: 32px;
   padding-bottom: 36px;
 }
 .footer-grid h3 {
@@ -441,6 +522,10 @@ a { color: var(--accent); }
   .card-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .gallery-item img { height: 180px; }
+  .quick-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .photo-band { height: 200px; }
+  .acc-btn { font-size: 1.02rem; padding: 16px 18px; }
+  .acc-panel { padding: 4px 18px 18px; }
   /* bigger touch target for the reference pills on a phone */
   .scripture { padding: 7px 14px; margin: 4px 5px 4px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -470,7 +555,9 @@ a { color: var(--accent); }
   .section { background-color: #ffffff !important; }
   .section-alt { background-color: var(--base-tint) !important; }
   .card, .visit-box, .belief-section, .gospel-section, .sched-item,
-  .gallery-item, #comingSoonModal .modal-box { background-color: #ffffff !important; }
+  .gallery-item, .acc-item, .quick-card,
+  #comingSoonModal .modal-box { background-color: #ffffff !important; }
+  .acc-btn:hover, .acc-item.open .acc-btn, .quick-icon { background-color: var(--base-tint) !important; }
   .pastor-avatar { border-color: #ffffff !important; }
   .site-header { background-color: #ffffff !important; }
   .service-band { background-color: var(--base-tint) !important; }
