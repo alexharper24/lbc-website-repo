@@ -94,9 +94,13 @@ Or `preview_start({name: "lbc"})` from the root launch.json. Before committing:
 python ../site-checks/check_site.py .
 ```
 
-## Deploy (not yet done)
+## Deploy
 
-GitHub Pages under `github.com/alexharper24/lbc-website-repo`, deploy from `main`/root.
+**Live (staging URL): https://alexharper24.github.io/lbc-website-repo/**
+Published 2026-08-08 from `main`/root on GitHub Pages, HTTPS enforced.
+Repo: https://github.com/alexharper24/lbc-website-repo (public).
+Pushing to `main` redeploys automatically, usually within a minute.
+
 `.nojekyll` is in the repo. **No CNAME file yet** — add it (containing
 `www.lbc-marion.org`) only at DNS cutover, otherwise the project URL preview breaks.
 Cutover: set custom domain in Pages settings first, then repoint DNS (apex A records
