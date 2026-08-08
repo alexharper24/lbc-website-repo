@@ -393,9 +393,16 @@ a { color: var(--accent); }
 .quick-card h3 { font-size: 1.02rem; margin-bottom: 6px; }
 .quick-card p { font-size: 0.94rem; color: var(--text-light); margin: 0; }
 
-/* ---------- ministry cards ---------- */
+/* ---------- ministry cards ----------
+   A photo header replaces the icon on these, so the padding moves off the card
+   and onto an inner body; the image can then run to the card's edges. */
 
-.ministry-card h2 { font-size: 1.3rem; margin: 14px 0 10px; }
+.ministry-card { padding: 0; }
+.card-media { width: 100%; height: 175px; object-fit: cover; display: block; }
+.ministry-card .card-body {
+  padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1 1 auto;
+}
+.ministry-card h2 { font-size: 1.3rem; margin: 0 0 10px; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .chip {
   display: inline-block; background: var(--base-tint); color: var(--primary);

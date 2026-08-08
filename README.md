@@ -84,6 +84,34 @@ channel; the old site's YouTube icon pointed at youtube.com's homepage) and
   scratchpad, not the repo; regenerating means re-deriving the reference parser, so
   **edit the pills in place rather than re-running a script over them.**
 
+## Images: sizing rules that matter
+
+**Photo bands render about 1052 CSS px wide, so a 2x screen needs a 2104px
+source.** Anything smaller looks blurry no matter how it is compressed. This is
+what made the I'm New band soft: it used a 1117px original at 0.53x.
+
+Current coverage (source width over required device pixels):
+
+| Slot | Photo | Largest candidate | Coverage |
+|---|---|---|---|
+| Hero (full viewport) | choir | `sanctuary-choir.jpg` 2000w | ~0.95x at 1052 CSS |
+| I'm New band | pulpit | `sanctuary-pulpit.jpg` 2100w | 1.00x |
+| Ministry card photos | supplied | 670-700w | ~1.02x at a 335px card |
+| Gallery tiles | dedicated thumbs | 700w | ~1.07x |
+
+**The auditorium photo cannot be used in a large slot.** Its original is only
+1117x691, so it will always be soft above roughly 550 CSS px on a retina screen.
+It is fine in the welcome column and as a gallery tile. Getting a
+higher-resolution copy from whoever took it is the only real fix.
+
+**Never share a filename between a small slot and a large one.** A browser is
+allowed to reuse an already-cached smaller `srcset` candidate rather than fetch
+the larger one, which silently softens the big slot on a second page view. This
+actually happened: the gallery loaded `sanctuary-pulpit-sm.jpg` at 700w, and the
+I'm New band then reused it for a 1052px slot. The gallery now uses dedicated
+`*-thumb.jpg` files for that reason. If you add a photo, check it is not also a
+`srcset` candidate somewhere larger.
+
 ## Images: no AI-generated imagery
 
 **Nine ChatGPT-generated images were supplied on 2026-08-08 and were not used.**
