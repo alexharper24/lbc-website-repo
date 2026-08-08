@@ -199,7 +199,6 @@ a { color: var(--accent); }
   background: var(--primary); display: flex; align-items: center; justify-content: center;
 }
 .card-icon svg { stroke: #fff; }
-.card-icon-sky { background: var(--accent-sky); }
 
 /* ---------- schedule ---------- */
 
@@ -220,18 +219,34 @@ a { color: var(--accent); }
 
 /* ---------- pastor ---------- */
 
-.pastor-grid { display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: center; }
-.pastor-photo img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; height: auto; }
+.pastor-grid { display: grid; grid-template-columns: 240px 1fr; gap: 44px; align-items: center; }
 .pastor-grid h2 { font-size: 2rem; }
 .pastor-role { color: var(--accent); font-weight: 600; margin-bottom: 14px; }
 
-/* photo placeholder (visible, deliberate) */
-.photo-placeholder {
-  border: 2px dashed var(--accent-sky); border-radius: var(--radius);
-  background: var(--base-tint); color: var(--accent);
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  font-weight: 600; padding: 24px; min-height: 300px;
+/* circular studio headshot: the supplied PNG is a round crop on a dark backdrop,
+   so it is clipped to a circle and given a white ring to lift it off the tint */
+.pastor-avatar {
+  width: 220px; height: 220px; border-radius: 50%;
+  object-fit: cover; background: var(--primary-dark);
+  border: 5px solid var(--white); box-shadow: var(--shadow-lg);
+  margin: 0 auto;
 }
+.pastor-family { margin: 36px 0 0; }
+.pastor-family img {
+  width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.pastor-family figcaption {
+  margin-top: 10px; text-align: center; font-size: 0.92rem; color: var(--text-light);
+}
+
+/* ---------- gallery ---------- */
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gallery-item {
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  background: var(--white);
+}
+.gallery-item img { width: 100%; height: 240px; object-fit: cover; }
 
 /* ---------- plan your visit ---------- */
 
@@ -263,9 +278,18 @@ a { color: var(--accent); }
 .belief-section h2 { font-size: 1.4rem; margin-bottom: 6px; }
 .belief-section .wave-rule { margin: 8px 0 16px; }
 .belief-section p { margin-bottom: 12px; }
-.belief-refs { color: var(--text-light); font-size: 0.92rem; font-style: italic; }
 .belief-section ul { margin: 0 0 12px 22px; }
 .belief-section li { margin-bottom: 6px; }
+
+/* Scripture reference lists. A plain block (not flex) so an expanded verse
+   inserted after a pill drops onto its own line instead of becoming a flex item. */
+.scripture-list { margin-top: 4px; }
+.scripture-list + .scripture-list { margin-top: 10px; }
+/* passages too long to be useful inline (whole chapters) stay as citations */
+.ref-plain {
+  display: inline-block; color: var(--text-light); font-size: 0.9rem;
+  font-style: italic; margin: 3px 8px 3px 0;
+}
 
 /* ---------- gospel ---------- */
 
@@ -306,19 +330,12 @@ a { color: var(--accent); }
   font-size: 0.85rem; font-weight: 600; margin: 3px 4px 3px 0; cursor: pointer;
 }
 .scripture:hover, .scripture.verse-active { background: var(--primary); color: #fff; }
+.scripture:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: 2px; }
 .verse-expanded {
   background: var(--base-tint); border-left: 3px solid var(--accent-sky);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 14px 16px; margin: 10px 0; font-size: 0.95rem;
 }
-
-/* ---------- events / calendar ---------- */
-
-.calendar-embed {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 16px; overflow: hidden;
-}
-.calendar-embed iframe { width: 100%; min-height: 700px; border: none; }
 
 /* ---------- contact ---------- */
 
@@ -398,9 +415,12 @@ a { color: var(--accent); }
   }
   .hero-bg { object-position: center 40%; }
   .two-col, .schedule-grid, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
-  .pastor-grid { grid-template-columns: 1fr; }
-  .pastor-photo { max-width: 340px; }
+  .pastor-grid { grid-template-columns: 1fr; gap: 24px; }
   .card-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .gallery-item img { height: 180px; }
+  /* bigger touch target for the reference pills on a phone */
+  .scripture { padding: 7px 14px; margin: 4px 5px 4px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 40px 0; }
   .service-band-inner { gap: 18px; flex-direction: column; }
@@ -428,7 +448,8 @@ a { color: var(--accent); }
   .section { background-color: #ffffff !important; }
   .section-alt { background-color: var(--base-tint) !important; }
   .card, .visit-box, .belief-section, .gospel-section, .sched-item,
-  .calendar-embed, #comingSoonModal .modal-box { background-color: #ffffff !important; }
+  .gallery-item, #comingSoonModal .modal-box { background-color: #ffffff !important; }
+  .pastor-avatar { border-color: #ffffff !important; }
   .site-header { background-color: #ffffff !important; }
   .service-band { background-color: var(--base-tint) !important; }
   .contact-form input, .contact-form textarea { background-color: #ffffff !important; color: var(--text) !important; }

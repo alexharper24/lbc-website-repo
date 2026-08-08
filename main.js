@@ -37,12 +37,16 @@ function toggleVerse(el) {
   if (expanded && expanded.classList.contains('verse-expanded')) {
     expanded.remove();
     el.classList.remove('verse-active');
+    el.setAttribute('aria-expanded', 'false');
     return;
   }
   var card = el.closest('.belief-section') || el.closest('.gospel-section');
   if (card) {
     card.querySelectorAll('.verse-expanded').forEach(function (v) { v.remove(); });
-    card.querySelectorAll('.verse-active').forEach(function (v) { v.classList.remove('verse-active'); });
+    card.querySelectorAll('.verse-active').forEach(function (v) {
+      v.classList.remove('verse-active');
+      v.setAttribute('aria-expanded', 'false');
+    });
   }
   var text = el.getAttribute('data-verse');
   if (!text) return;
@@ -55,6 +59,42 @@ function toggleVerse(el) {
   div.appendChild(document.createTextNode(text));
   el.parentNode.insertBefore(div, el.nextSibling);
   el.classList.add('verse-active');
+  el.setAttribute('aria-expanded', 'true');
+}
+
+/* keyboard equivalent for the reference pills (they are spans, not buttons) */
+function verseKey(e, el) {
+  if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+    e.preventDefault();
+    toggleVerse(el);
+  }
+}
+
+/* ---------- online giving ----------
+   Opens Tithe.ly in a sized popup so the church site stays put behind it, and so
+   the giving form runs on Tithe.ly's own origin (their padlock and domain stay
+   visible to the donor, and their payment flow is untouched). The anchors keep a
+   real href with target="_blank", so if the popup is blocked or JS is off the
+   browser's default still works. */
+
+function openGiving(e) {
+  var a = e.currentTarget || e.target;
+  var url = a.getAttribute('href');
+  if (!url) return;
+  var w = 480, h = 780;
+  var left = Math.max(0, Math.round((window.screen.width - w) / 2));
+  var top = Math.max(0, Math.round((window.screen.height - h) / 3));
+  var win = window.open(
+    url, 'lbcGiving',
+    'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top +
+    ',resizable=yes,scrollbars=yes'
+  );
+  if (win) {
+    try { win.opener = null; } catch (err) { /* cross-origin, not critical */ }
+    win.focus();
+    e.preventDefault();   // handled; don't also open a tab
+  }
+  /* popup blocked: fall through to the anchor's own target="_blank" */
 }
 
 /* ---------- coming soon modal ---------- */

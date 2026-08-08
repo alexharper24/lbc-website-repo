@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -39,10 +39,8 @@
       <a href="beliefs.html">Beliefs</a>
       <a href="gospel.html" class="active">Gospel</a>
       <a href="ministries.html">Ministries</a>
-      <a href="sermons.html">Sermons</a>
-      <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
-      <a class="btn btn-primary" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give</a>
+      <a class="btn btn-primary" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give</a>
     </nav>
     <button class="nav-toggle" onclick="openMobileNav()" aria-label="Open menu">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#023f83" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -62,10 +60,8 @@
   <a href="beliefs.html">What We Believe</a>
   <a href="gospel.html">The Gospel</a>
   <a href="ministries.html">Ministries</a>
-  <a href="sermons.html">Sermons</a>
-  <a href="events.html">Events</a>
   <a href="contact.html">Contact</a>
-  <a class="btn" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give Online</a>
+  <a class="btn" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give Online</a>
 </nav>
 
 <main>
@@ -87,10 +83,10 @@
         <p class="gospel-sub">Who He Is and What He Requires</p>
         <h2>God</h2>
         <p>God is the holy and perfect Creator of everything, including you. Because He made us, He has rightful authority over us. And because He is perfectly holy, His standard is perfection.</p>
-        <p>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="In the beginning God created the heaven and the earth.">Genesis 1:1</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="Be ye therefore perfect, even as your Father which is in heaven is perfect.">Matthew 5:48</span>
-        </p>
+        <div class="scripture-list">
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="In the beginning God created the heaven and the earth.">Genesis 1:1</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="Be ye therefore perfect, even as your Father which is in heaven is perfect.">Matthew 5:48</span>
+        </div>
       </div>
     </div>
 
@@ -100,10 +96,10 @@
         <p class="gospel-sub">The Problem</p>
         <h2>Sin</h2>
         <p>Every one of us has fallen short of God's standard. Sin is not just the big things; it is any thought, word, or action that misses His perfection. The Bible says we are all guilty, and our sin separates us from God.</p>
-        <p>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For all have sinned, and come short of the glory of God;">Romans 3:23</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="But your iniquities have separated between you and your God, and your sins have hid his face from you, that he will not hear.">Isaiah 59:2</span>
-        </p>
+        <div class="scripture-list">
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For all have sinned, and come short of the glory of God;">Romans 3:23</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="But your iniquities have separated between you and your God, and your sins have hid his face from you, that he will not hear.">Isaiah 59:2</span>
+        </div>
       </div>
     </div>
 
@@ -113,11 +109,11 @@
         <p class="gospel-sub">The Penalty</p>
         <h2>Death</h2>
         <p>Sin carries a just penalty: death, and eternal separation from God. And no amount of good works, church attendance, or effort can pay that debt. We cannot save ourselves.</p>
-        <p>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.">Romans 6:23</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="And as it is appointed unto men once to die, but after this the judgment:">Hebrews 9:27</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost;">Titus 3:5</span>
-        </p>
+        <div class="scripture-list">
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.">Romans 6:23</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="And as it is appointed unto men once to die, but after this the judgment:">Hebrews 9:27</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost;">Titus 3:5</span>
+        </div>
       </div>
     </div>
 
@@ -127,11 +123,11 @@
         <p class="gospel-sub">The Payment</p>
         <h2>What Christ Did</h2>
         <p>This is the good news. Jesus Christ, God's own Son, lived the perfect life we could not live, died on the cross in our place, and rose again the third day. His death was the full payment for our sin, offered freely to all who will receive it.</p>
-        <p>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.">John 3:16</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.">Romans 5:8</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures; And that he was buried, and that he rose again the third day according to the scriptures:">1 Corinthians 15:3-4</span>
-        </p>
+        <div class="scripture-list">
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.">John 3:16</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.">Romans 5:8</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures; And that he was buried, and that he rose again the third day according to the scriptures:">1 Corinthians 15:3-4</span>
+        </div>
       </div>
     </div>
 
@@ -141,12 +137,12 @@
         <p class="gospel-sub">The Decision</p>
         <h2>Faith</h2>
         <p>Salvation is received by turning from your sin to God and placing your full trust in Jesus Christ alone. Not in your works, not in church membership, not in being a good person. In Christ alone.</p>
-        <p>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="And they said, Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house.">Acts 16:31</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.">Ephesians 2:8-9</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="For whosoever shall call upon the name of the Lord shall be saved.">Romans 10:13</span>
-          <span class="scripture" onclick="toggleVerse(this)" data-verse="He that believeth on the Son hath everlasting life: and he that believeth not the Son shall not see life; but the wrath of God abideth on him.">John 3:36</span>
-        </p>
+        <div class="scripture-list">
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="And they said, Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house.">Acts 16:31</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.">Ephesians 2:8-9</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="For whosoever shall call upon the name of the Lord shall be saved.">Romans 10:13</span>
+          <span class="scripture" role="button" tabindex="0" aria-expanded="false" onclick="toggleVerse(this)" onkeydown="verseKey(event,this)" data-verse="He that believeth on the Son hath everlasting life: and he that believeth not the Son shall not see life; but the wrath of God abideth on him.">John 3:36</span>
+        </div>
       </div>
     </div>
 
@@ -195,8 +191,7 @@
         <ul>
           <li><a href="im-new.html">Plan Your Visit</a></li>
           <li><a href="beliefs.html">What We Believe</a></li>
-          <li><a href="events.html">Church Calendar</a></li>
-          <li><a href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give Online</a></li>
+          <li><a href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give Online</a></li>
           <li><a href="https://lighthousebaptistchurch5573.breezechms.com">Member Login</a></li>
         </ul>
       </div>
@@ -213,6 +208,6 @@
   </div>
 </div>
 
-<script src="main.js?v=1"></script>
+<script src="main.js?v=2"></script>
 </body>
 </html>

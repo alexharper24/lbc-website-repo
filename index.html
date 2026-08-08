@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/sanctuary-choir.jpg" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -40,10 +40,8 @@
       <a href="beliefs.html">Beliefs</a>
       <a href="gospel.html">Gospel</a>
       <a href="ministries.html">Ministries</a>
-      <a href="sermons.html">Sermons</a>
-      <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
-      <a class="btn btn-primary" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give</a>
+      <a class="btn btn-primary" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give</a>
     </nav>
     <button class="nav-toggle" onclick="openMobileNav()" aria-label="Open menu">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#023f83" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -63,10 +61,8 @@
   <a href="beliefs.html">What We Believe</a>
   <a href="gospel.html">The Gospel</a>
   <a href="ministries.html">Ministries</a>
-  <a href="sermons.html">Sermons</a>
-  <a href="events.html">Events</a>
   <a href="contact.html">Contact</a>
-  <a class="btn" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give Online</a>
+  <a class="btn" href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give Online</a>
 </nav>
 
 <main>
@@ -107,7 +103,7 @@
       <a class="btn btn-primary" href="im-new.html">What to Expect</a>
     </div>
     <div class="fade-up">
-      <img src="img/sanctuary-pulpit-sm.jpg" alt="Pastor Hon preaching from the pulpit at Lighthouse Baptist Church" width="700" height="525" loading="lazy">
+      <img src="img/auditorium-2-sm.jpg" alt="The congregation standing during a service in the Lighthouse Baptist Church auditorium" width="700" height="433" loading="lazy">
     </div>
   </div>
 </section>
@@ -161,29 +157,54 @@
         <div class="sched-item"><span class="day-badge">ALL</span><div><strong>Nursery</strong><span>Provided at every service for children age 2 and younger</span></div></div>
         <div class="sched-item"><span class="day-badge">SUN</span><div><strong>Toddler and Children's Church</strong><span>During the Sunday morning service</span></div></div>
         <div class="sched-item"><span class="day-badge">T-F</span><div><strong>Church Office</strong><span>Tuesday to Friday, 9:00 am to 4:00 pm</span></div></div>
-        <p style="margin-top:16px;"><a class="btn btn-outline" href="events.html">View the Church Calendar</a></p>
+        <p style="margin-top:16px;"><a class="btn btn-outline" href="contact.html">Contact the Office</a></p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section section-alt" id="pastor">
-  <div class="container pastor-grid">
-    <div class="pastor-photo fade-up">
-      <!-- REPLACE THIS: pastor (or pastor and family) photo needed from the church -->
-      <div class="photo-placeholder">REPLACE THIS<br>Photo of Pastor Hon</div>
+  <div class="container">
+    <div class="pastor-grid">
+      <div class="fade-up">
+        <img class="pastor-avatar" src="img/pastor-ron-hon.png" alt="Dr. Ronald A. Hon, Pastor of Lighthouse Baptist Church" width="240" height="240" loading="lazy">
+      </div>
+      <div class="fade-up">
+        <h2>Our Pastor</h2>
+        <span class="wave-rule wave-rule-left"></span>
+        <p class="pastor-role" style="margin-top:10px;">Dr. Ronald A. Hon</p>
+        <p>Dr. Ronald Hon is the Pastor at Lighthouse Baptist Church. He graduated from Hyles-Anderson College and has served in Marion for over 25 years. He is married to Cindy Hon, and together they have 9 children, all of whom serve the Lord.</p>
+        <p>Pastor Hon has a vision to reach Grant County with the gospel and see lives changed. He preaches powerful sermons with a Biblical and practical emphasis.</p>
+      </div>
     </div>
-    <div class="fade-up">
-      <h2>Our Pastor</h2>
-      <span class="wave-rule wave-rule-left"></span>
-      <p class="pastor-role" style="margin-top:10px;">Dr. Ronald A. Hon</p>
-      <p>Dr. Ronald Hon is the Pastor at Lighthouse Baptist Church. He graduated from Hyles-Anderson College and has served in Marion for over 25 years. He is married to Cindy Hon, and together they have 9 children, all of whom serve the Lord.</p>
-      <p>Pastor Hon has a vision to reach Grant County with the gospel and see lives changed. He preaches powerful sermons with a Biblical and practical emphasis.</p>
+    <figure class="pastor-family fade-up">
+      <img src="img/hon-family.jpg" alt="The Hon family" width="1000" height="567" loading="lazy">
+      <figcaption>The Hon family</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="life">
+  <div class="container">
+    <div class="section-header">
+      <h2>Life at Lighthouse</h2>
+      <span class="wave-rule"></span>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up">
+        <img src="img/auditorium-1-sm.jpg" alt="The congregation standing together during a service" width="700" height="562" loading="lazy">
+      </div>
+      <div class="gallery-item fade-up">
+        <img src="img/sanctuary-choir-sm.jpg" alt="The choir singing during a Sunday service" width="700" height="525" loading="lazy">
+      </div>
+      <div class="gallery-item fade-up">
+        <img src="img/sanctuary-pulpit-sm.jpg" alt="Preaching from the pulpit during a Sunday service" width="700" height="525" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="visit">
+<section class="section section-alt" id="visit">
   <div class="container">
     <div class="section-header">
       <h2>Plan Your Visit</h2>
@@ -245,8 +266,7 @@
         <ul>
           <li><a href="im-new.html">Plan Your Visit</a></li>
           <li><a href="beliefs.html">What We Believe</a></li>
-          <li><a href="events.html">Church Calendar</a></li>
-          <li><a href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11">Give Online</a></li>
+          <li><a href="https://give.tithe.ly/?formId=679f686f-5d42-11ee-90fc-1260ab546d11" target="_blank" rel="noopener" onclick="openGiving(event)">Give Online</a></li>
           <li><a href="https://lighthousebaptistchurch5573.breezechms.com">Member Login</a></li>
         </ul>
       </div>
@@ -313,6 +333,6 @@
 }
 </script>
 
-<script src="main.js?v=1"></script>
+<script src="main.js?v=2"></script>
 </body>
 </html>
