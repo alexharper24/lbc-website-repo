@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -113,7 +113,11 @@
 </section>
 
 <div class="photo-band">
-  <img src="img/sanctuary-choir.jpg" alt="The congregation and choir together during a Sunday service" width="1400" height="1050" loading="lazy">
+  <img src="img/sanctuary-choir-1200.jpg"
+       srcset="img/sanctuary-choir-sm.jpg 700w, img/sanctuary-choir-1200.jpg 1200w"
+       sizes="(max-width: 1149px) 100vw, 1052px"
+       alt="The congregation and choir together during a Sunday service"
+       width="1200" height="900" loading="lazy">
 </div>
 
 <section class="section">
@@ -121,10 +125,10 @@
     <h2>Come and See for Yourself</h2>
     <span class="wave-rule"></span>
     <p style="margin-top:16px;">The best way to find where your family fits is to visit. Our greeters will help you find the right class or service for everyone.</p>
-    <p style="margin-top:20px;">
+    <div class="btn-row" style="margin-top:22px;">
       <a class="btn btn-primary" href="im-new.html">Plan Your Visit</a>
-      <a class="btn btn-outline" href="contact.html" style="margin-left:8px;">Ask a Question</a>
-    </p>
+      <a class="btn btn-outline" href="contact.html">Ask a Question</a>
+    </div>
   </div>
 </section>
 

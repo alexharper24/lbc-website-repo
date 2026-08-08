@@ -26,8 +26,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/sanctuary-choir.jpg" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="preload" as="image" href="img/sanctuary-choir-1200.jpg"
+      imagesrcset="img/sanctuary-choir-sm.jpg 700w, img/sanctuary-choir-1200.jpg 1200w, img/sanctuary-choir.jpg 1400w"
+      imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -68,7 +70,11 @@
 <main>
 
 <section class="hero-full">
-  <img class="hero-bg" src="img/sanctuary-choir.jpg" alt="The choir and congregation during a Sunday service at Lighthouse Baptist Church" width="1400" height="1050" fetchpriority="high">
+  <img class="hero-bg" src="img/sanctuary-choir-1200.jpg"
+       srcset="img/sanctuary-choir-sm.jpg 700w, img/sanctuary-choir-1200.jpg 1200w, img/sanctuary-choir.jpg 1400w"
+       sizes="100vw"
+       alt="The choir and congregation during a Sunday service at Lighthouse Baptist Church"
+       width="1400" height="1050" fetchpriority="high">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-copy">

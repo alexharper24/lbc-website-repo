@@ -84,6 +84,35 @@ channel; the old site's YouTube icon pointed at youtube.com's homepage) and
   scratchpad, not the repo; regenerating means re-deriving the reference parser, so
   **edit the pills in place rather than re-running a script over them.**
 
+## Images: no AI-generated imagery
+
+**Nine ChatGPT-generated images were supplied on 2026-08-08 and were not used.**
+They were intended as cleaned-up versions of the church's real photos, but they
+are regenerations rather than enhancements: two of them show the same scene with
+different flags in different positions and a different number of people, and one
+has invented, smeared faces where identifiable congregation members stood. Two
+enhancements of a single photograph cannot disagree with each other.
+
+They are preserved (never delete supplied assets) in
+`source-media/ai-generated-NOT-published/`, which is gitignored so they cannot
+reach the site. That folder has its own README explaining why.
+
+This follows the standing rule in `C:\Git_Repos\CLAUDE.md`: *"Respect the real
+photos... Never AI-generate, montage, invert, or heavily restyle them."* Beyond
+style, these depict identifiable people including the pastor at their own church,
+so publishing altered likenesses is a consent problem, and a visitor could arrive
+expecting a room that does not exist.
+
+**The faithful way to get sharper images**, used here instead: re-derive from the
+true originals in `source-media/` with a Lanczos downscale and a light unsharp
+mask. The pulpit original is 4032x3024 against the 1400px file the site ships, so
+there was real headroom. The sanctuary photos were re-derived this way and now
+also carry `srcset`, so a phone downloads 700w or 1200w instead of the full file.
+
+Note for future measurement: on an image with `srcset` `w` descriptors,
+`naturalWidth` is **density-corrected** and reports the CSS size, not the file's
+intrinsic width. It cannot be used to detect upscaling on those images.
+
 ## Integrations (carried over from the old site, all still owned by the church)
 
 | What | Where |
