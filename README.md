@@ -25,13 +25,24 @@ channel; the old site's YouTube icon pointed at youtube.com's homepage) and
 
 ## Design decisions (do not "fix" these back)
 
-- **Accent color departures (two of them, both measured):** the logo's sky blue
-  `#42a6d7` fails WCAG AA on white (2.74:1), so text-level accents on light
-  backgrounds use harbor blue `#2b7cab` (4.59:1 PASS). The same sky blue also fails
-  as small text *on the navy hero overlay* (3.11:1), so text on dark uses the lighter
-  tint `--accent-sky-light: #8fd3f0` (5.17:1 PASS). Pure `#42a6d7` is reserved for
-  large graphics only: wave rules, the service-band top edge, icon fills. See the
-  header comment in `style.css`.
+- **The palette is measured, not eyeballed.** The logo's sky blue `#42a6d7` cannot
+  carry small text anywhere on this site, so three derived tokens do that work and
+  the raw logo colour is reserved for large graphics:
+
+  | Token | Value | Used for | Measured |
+  |---|---|---|---|
+  | `--accent` | `#236892` | text on white **and** on the tint | 6.06:1 on white, 4.87:1 on tint |
+  | `--accent-sky-light` | `#8fd3f0` | small text on the dark hero | 5.17:1 over the overlay |
+  | `--accent-sky-deep` | `#2789b9` | wave rules and marks drawn on the tint | 3.15:1 on tint |
+  | `--accent-sky` | `#42a6d7` | large graphics only, never text | 2.74:1 on white (fails as text) |
+
+  The accent was `#2b7cab` until 2026-08-08. It passed on white at 4.59:1 but
+  **quietly failed at 4.23:1 on the tinted sections**, which is where the pastor's
+  name sits. Re-measure any accent against *both* backgrounds it lands on.
+- **`--base-tint` is `#dde8f1`, a real tint at 1.24:1 against white.** It was
+  `#f2f6f9` (1.09:1), which read as plain white and made the whole site look
+  untinted. Darkening it moved every foreground colour, so all of them were
+  re-measured against the new value; the table above is the result.
 - **Hero is a full-bleed photo with the headline centered over it**, using an even
   top-to-bottom navy overlay (`0.78` to `0.86` alpha, `0.82` to `0.90` on mobile).
   Those alphas are set from measured contrast against this photo's pixels, not picked
@@ -110,30 +121,43 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 
 ## Pending (the placeholder list)
 
-1. ~~Pastor photo~~ **Done 2026-08-08.** Alex supplied `pastor-ron-hon.png` (240px
-   circular studio crop, clipped round in CSS) and `hon-family.jpg`.
-2. **REPLACE THIS — Formspree form ID** (`contact.html`, `action="https://formspree.io/f/YOUR_FORM_ID"`).
-   Create the form for `info@lbc-marion.org`; first submission needs a one-time email
-   confirmation from that inbox.
-3. **Sermons/streaming**: page removed as stale. Revisit only if the church confirms a
-   real YouTube channel or livestream, then rebuild a sermons page around it.
-4. **Still no exterior photo.** The four photos Alex added (2026-08-08) are all interior
-   or people shots. A building exterior and the road sign are the remaining gap, and
-   they are what a first-time visitor looks for. The hero still uses the Feb 2020
-   `sanctuary-choir.jpg` because at 1400px it is the highest-resolution image available;
-   the newer auditorium shots are only 1117px and would upsample in a full-bleed hero.
-5. ~~Hero variant~~ **Done.** Full-bleed choir photo, centered text, even overlay.
-   Preview page deleted. Swapping the photo means re-running the contrast measurement
-   above.
-6. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm with the
-   church whether the retreat still needs a page (currently dropped).
-7. **Staff confirmation**: old site listed Pastor Hon + Amber Biven (Admin). Only Pastor
-   Hon appears on the site now; add Amber (or a team page) if the church wants it.
-8. **Geo coordinates for JSON-LD** (`index.html` Church schema has no `geo` block yet):
-   right-click the building on Google Maps and add latitude/longitude.
-9. **Google Business Profile**: confirm the church has claimed it; NAP must match the
-   site byte for byte: `Lighthouse Baptist Church / 2445 W. Kem Road, Marion, IN 46952 / (765) 384-7572`.
-10. **Doctrinal statement sign-off** from the church (migrated verbatim, but they
-    should confirm it is current).
-11. **Old Twitter link dropped** (twitter.com/lbcmarion, apparently dormant). Confirm
-    the church is fine with Facebook-only, or supply a current X/other profile.
+**Blocking a real launch:**
+
+1. **REPLACE THIS — Formspree form ID** (`contact.html`, `action="https://formspree.io/f/YOUR_FORM_ID"`).
+   Create the form for `info@lbc-marion.org`; the first submission needs a one-time
+   email confirmation from that inbox. Until then the contact form does not send.
+2. **No exterior photo.** Every photo on hand is an interior or a group of people. A
+   building exterior and the road sign are the real gap, and they are the first thing
+   a visitor looks for. The hero still uses the Feb 2020 `sanctuary-choir.jpg` because
+   at 1400px it is the highest-resolution image available.
+
+**Needs an answer from the church:**
+
+3. **Sermons and streaming**: the page was removed as stale. Revisit only if they
+   confirm a real YouTube channel or livestream, then rebuild a page around it.
+4. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm whether
+   the retreat still needs a page (currently dropped).
+5. **Staff**: the old site listed Pastor Hon and Amber Biven (Admin). Only Pastor Hon
+   appears now; add Amber, or a team page, if they want it.
+6. **Doctrinal statement sign-off.** Migrated verbatim, but they should confirm it is
+   current.
+7. **Old Twitter link dropped** (twitter.com/lbcmarion, apparently dormant). Confirm
+   Facebook-only is fine, or supply a current profile.
+
+**Discoverability, off-site:**
+
+8. **Google Business Profile**: confirm it is claimed. NAP must match the site byte for
+   byte: `Lighthouse Baptist Church`, `2445 W. Kem Road, Marion, IN 46952`,
+   `(765) 384-7572`. This drives more visits than anything on the site itself.
+9. **Geo coordinates for the JSON-LD** (`index.html` Church schema has no `geo` block):
+   right-click the building in Google Maps and paste latitude/longitude in.
+
+**Done, recorded so nobody redoes it:**
+
+10. ~~Pastor photo~~ Alex supplied `pastor-ron-hon.png` (240px circular studio crop,
+    clipped round in CSS) and `hon-family.jpg`, 2026-08-08.
+11. ~~Hero variant~~ Full-bleed choir photo, centered text, even overlay. Preview page
+    deleted. Swapping the photo means re-running the contrast measurement above.
+12. ~~Photo band sizing~~ Capped at the container width. Full-bleed upscaled the
+    1100-1400px sources about 2.8x and read as a stretched, blurry slice. If a much
+    larger photo arrives, full-bleed becomes viable again.

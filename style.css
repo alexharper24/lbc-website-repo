@@ -11,12 +11,21 @@
   color-scheme: light only !important;
   --primary: #023f83;
   --primary-dark: #012d5e;
-  --accent: #2b7cab;
+  /* Text accent. Measured against BOTH backgrounds it lands on: 6.06:1 on white
+     and 4.87:1 on --base-tint. The previous #2b7cab passed on white (4.59:1) but
+     quietly failed on the tint (4.23:1), which is where the pastor's name sits. */
+  --accent: #236892;
   --accent-sky: #42a6d7;
   /* sky blue is too dark to read as small text on the navy hero overlay (3.11:1),
      so text-on-dark uses this lighter tint of the same hue (5.23:1). */
   --accent-sky-light: #8fd3f0;
-  --base-tint: #f2f6f9;
+  /* and too light to read as a graphic ON the tint (2.20:1), so rules and marks
+     drawn on tinted sections use this deeper sky (3.15:1) */
+  --accent-sky-deep: #2789b9;
+  /* A real tint, not a hint of one: 1.24:1 against white, where the old #f2f6f9
+     was 1.09:1 and read as plain white. Every foreground above was re-measured
+     against this value. */
+  --base-tint: #dde8f1;
   --text: #2d2d2d;
   --text-light: #5a5a5a;
   --white: #ffffff;
@@ -70,7 +79,7 @@ a { color: var(--accent); }
   width: 64px;
   height: 10px;
   margin: 12px auto 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='10' viewBox='0 0 64 10'%3E%3Cpath d='M1 5 Q9 1 17 5 T33 5 T49 5 T63 5' fill='none' stroke='%2342a6d7' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='10' viewBox='0 0 64 10'%3E%3Cpath d='M1 5 Q9 1 17 5 T33 5 T49 5 T63 5' fill='none' stroke='%232789b9' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
 }
 .wave-rule-left { margin-left: 0; }
 
@@ -209,8 +218,18 @@ a { color: var(--accent); }
 }
 .section-alt .card { background: var(--white); }
 .card h3 { font-size: 1.25rem; margin: 14px 0 8px; }
-.card p { color: var(--text-light); font-size: 0.98rem; flex-grow: 1; }
-.card .card-link { margin-top: 14px; font-weight: 600; text-decoration: none; color: var(--accent); }
+/* every paragraph used to carry flex-grow, which split the free space between
+   them instead of leaving a gap after each one, so multi-paragraph cards read as
+   one run-on block. Space them normally and let the link take the slack. */
+.card p { color: var(--text-light); font-size: 0.98rem; margin-bottom: 12px; }
+.card p:last-of-type { margin-bottom: 0; }
+.card .card-link {
+  margin-top: auto; padding-top: 14px; font-weight: 600;
+  text-decoration: none; color: var(--accent);
+}
+/* cards whose copy differs a lot in length: hug the content instead of
+   stretching every card to the tallest one and leaving dead space below */
+.card-grid.cards-top { align-items: start; }
 .card .card-link:hover { color: var(--primary); }
 
 .card-icon {
@@ -370,10 +389,17 @@ a { color: var(--accent); }
   border-radius: 999px; padding: 4px 12px; font-size: 0.82rem; font-weight: 600;
 }
 
-/* ---------- photo band (breaks up a text-heavy page) ---------- */
+/* ---------- photo band (breaks up a text-heavy page) ----------
+   Held to the container width on purpose. Full-bleed looked stretched because the
+   available photos are 1100-1400px wide and a wide viewport upscaled them ~2.8x,
+   which reads as blur, and a 300px slice of a full-width band cropped away most
+   of the picture. Capped at the container, the source renders at roughly 1:1. */
 
-.photo-band { position: relative; height: 300px; overflow: hidden; }
-.photo-band img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.photo-band { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.photo-band img {
+  width: 100%; height: 380px; object-fit: cover; object-position: center 45%;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
 
 /* ---------- gospel ---------- */
 
@@ -410,13 +436,13 @@ a { color: var(--accent); }
 
 .scripture {
   display: inline-block; background: var(--base-tint); color: var(--primary);
-  border: 1px solid #d5e2ec; border-radius: 999px; padding: 3px 12px;
+  border: 1px solid #c2d5e5; border-radius: 999px; padding: 3px 12px;
   font-size: 0.85rem; font-weight: 600; margin: 3px 4px 3px 0; cursor: pointer;
 }
 .scripture:hover, .scripture.verse-active { background: var(--primary); color: #fff; }
 .scripture:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: 2px; }
 .verse-expanded {
-  background: var(--base-tint); border-left: 3px solid var(--accent-sky);
+  background: var(--base-tint); border-left: 3px solid var(--accent-sky-deep);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 14px 16px; margin: 10px 0; font-size: 0.95rem;
 }
@@ -523,7 +549,7 @@ a { color: var(--accent); }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .gallery-item img { height: 180px; }
   .quick-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .photo-band { height: 200px; }
+  .photo-band img { height: 240px; }
   .acc-btn { font-size: 1.02rem; padding: 16px 18px; }
   .acc-panel { padding: 4px 18px 18px; }
   /* bigger touch target for the reference pills on a phone */
