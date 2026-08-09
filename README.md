@@ -84,6 +84,24 @@ channel; the old site's YouTube icon pointed at youtube.com's homepage) and
   scratchpad, not the repo; regenerating means re-deriving the reference parser, so
   **edit the pills in place rather than re-running a script over them.**
 
+## Photo inventory
+
+Supplied 2026-08-08 and in use. All are genuine photographs. Originals live in
+gitignored `source-media/` under their supplied names.
+
+| File | Slot | Source | Coverage |
+|---|---|---|---|
+| `pastor-hon.jpg` | homepage pastor portrait | 1536x2048 | 1.07x |
+| `youth-leaders.jpg` | ministries leaders block | 960x720 | 1.07x |
+| `children-ministry.jpg` | ministries card | 670x350 | 1.02x |
+| `youth-ministry.jpg` | ministries card | 1045x784 | 1.06x |
+| `bus-ministry.jpg` | ministries card | 670x350 | 1.02x |
+| `vbs-games-thumb.jpg` etc. | homepage gallery | 1280-2048px | 1.04x+ |
+
+The superseded circular headshot is in `archive/pastor-ron-hon-circular-2026-08.png`.
+Several gallery originals are 2048px, so they have headroom for larger slots if the
+layout ever needs it, unlike the auditorium shots.
+
 ## Images: sizing rules that matter
 
 **Photo bands render about 1052 CSS px wide, so a 2x screen needs a 2104px
@@ -183,10 +201,9 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 1. **REPLACE THIS — Formspree form ID** (`contact.html`, `action="https://formspree.io/f/YOUR_FORM_ID"`).
    Create the form for `info@lbc-marion.org`; the first submission needs a one-time
    email confirmation from that inbox. Until then the contact form does not send.
-2. **No exterior photo.** Every photo on hand is an interior or a group of people. A
-   building exterior and the road sign are the real gap, and they are the first thing
-   a visitor looks for. The hero still uses the Feb 2020 `sanctuary-choir.jpg` because
-   at 1400px it is the highest-resolution image available.
+2. **Still no exterior photo or road sign.** This is now the only real gap. Every
+   photo on hand is an interior, an event, or a group. It is the first thing a
+   first-time visitor looks for, so it is worth asking the church for specifically.
 
 **Needs an answer from the church:**
 
@@ -194,8 +211,10 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
    confirm a real YouTube channel or livestream, then rebuild a page around it.
 4. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm whether
    the retreat still needs a page (currently dropped).
-5. **Staff**: the old site listed Pastor Hon and Amber Biven (Admin). Only Pastor Hon
-   appears now; add Amber, or a team page, if they want it.
+5. **Staff**: the old site listed Pastor Hon and Amber Biven (Admin). Pastor Hon and
+   the youth leaders appear now; add Amber, or a full team page, if they want it.
+   **Only "Jared" is recorded** for the youth leaders, because that is all that was
+   supplied. Get the family's full name before adding it anywhere.
 6. **Doctrinal statement sign-off.** Migrated verbatim, but they should confirm it is
    current.
 7. **Old Twitter link dropped** (twitter.com/lbcmarion, apparently dormant). Confirm

@@ -265,17 +265,19 @@ a { color: var(--accent); }
 
 /* ---------- pastor ---------- */
 
-.pastor-grid { display: grid; grid-template-columns: 240px 1fr; gap: 44px; align-items: center; }
+.pastor-grid { display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; }
 .pastor-grid h2 { font-size: 2rem; }
 .pastor-role { color: var(--accent); font-weight: 600; margin-bottom: 14px; }
 
-/* circular studio headshot: the supplied PNG is a round crop on a dark backdrop,
-   so it is clipped to a circle and given a white ring to lift it off the tint */
-.pastor-avatar {
-  width: 220px; height: 220px; border-radius: 50%;
-  object-fit: cover; background: var(--primary-dark);
-  border: 5px solid var(--white); box-shadow: var(--shadow-lg);
-  margin: 0 auto;
+/* A real portrait photograph, shown as a portrait rather than squeezed into a
+   circle. The previous 240px circular crop was all the resolution we had; this
+   one is 600px, so it can be shown properly. */
+/* `height: auto` is required: the img's height attribute is a presentational
+   hint that otherwise wins over aspect-ratio, which stretched this to 280x800 */
+.pastor-portrait {
+  width: 100%; height: auto; aspect-ratio: 3 / 4;
+  object-fit: cover; object-position: center top;
+  border-radius: var(--radius); box-shadow: var(--shadow-lg);
 }
 .pastor-family { margin: 36px 0 0; }
 .pastor-family img {
@@ -290,9 +292,14 @@ a { color: var(--accent); }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: var(--white);
+  background: var(--white); margin: 0;
 }
 .gallery-item img { width: 100%; height: 240px; object-fit: cover; }
+/* captions: a photo of an event is far more use when it says which event */
+.gallery-item figcaption {
+  padding: 12px 16px; font-size: 0.92rem; font-weight: 600; color: var(--primary);
+  text-align: center;
+}
 
 /* ---------- plan your visit ---------- */
 
@@ -408,6 +415,16 @@ a { color: var(--accent); }
   display: inline-block; background: var(--base-tint); color: var(--primary);
   border-radius: 999px; padding: 4px 12px; font-size: 0.82rem; font-weight: 600;
 }
+
+/* ---------- ministry leaders (photo beside a short introduction) ---------- */
+
+.leaders-block {
+  display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: center;
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 28px; margin-top: 30px;
+}
+.leaders-block img { width: 100%; height: auto; border-radius: var(--radius); }
+.leaders-block h3 { font-size: 1.3rem; margin-bottom: 10px; }
 
 /* ---------- photo band (breaks up a text-heavy page) ----------
    Held to the container width on purpose. Full-bleed looked stretched because the
@@ -583,6 +600,8 @@ a { color: var(--accent); }
   /* stacked: nothing to match heights with, so let the photo be its natural shape */
   .two-col img { height: auto; }
   .pastor-grid { grid-template-columns: 1fr; gap: 24px; }
+  .pastor-portrait { max-width: 300px; margin: 0 auto; }
+  .leaders-block { grid-template-columns: 1fr; gap: 22px; padding: 22px; }
   .card-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .gallery-item img { height: 180px; }
