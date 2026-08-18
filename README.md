@@ -215,6 +215,9 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
    the youth leaders appear now; add Amber, or a full team page, if they want it.
    **Only "Jared" is recorded** for the youth leaders, because that is all that was
    supplied. Get the family's full name before adding it anywhere.
+   Two adults also appear in the new Youth Ministry photo (`img/youth-ministry.jpg`);
+   its alt text is deliberately generic because nobody has confirmed who they are.
+   If they are Jared and his wife, the alt text can name them.
 6. **Doctrinal statement sign-off.** Migrated verbatim, but they should confirm it is
    current.
 7. **Old Twitter link dropped** (twitter.com/lbcmarion, apparently dormant). Confirm
