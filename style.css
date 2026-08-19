@@ -410,6 +410,10 @@ a { color: var(--accent); }
   padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1 1 auto;
 }
 .ministry-card h2 { font-size: 1.3rem; margin: 0 0 10px; }
+/* the homepage ministry cards use h3 and used to sit under a 48px icon, so .card h3
+   carries a 14px top margin. Inside .card-body that stacks on the body's own padding
+   and pushes the heading off the photo, so zero it out for these cards only. */
+.ministry-card .card-body h3 { margin: 0 0 8px; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .chip {
   display: inline-block; background: var(--base-tint); color: var(--primary);
