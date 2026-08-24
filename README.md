@@ -201,9 +201,12 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 1. **REPLACE THIS — Formspree form ID** (`contact.html`, `action="https://formspree.io/f/YOUR_FORM_ID"`).
    Create the form for `info@lbc-marion.org`; the first submission needs a one-time
    email confirmation from that inbox. Until then the contact form does not send.
-2. **Still no exterior photo or road sign.** This is now the only real gap. Every
-   photo on hand is an interior, an event, or a group. It is the first thing a
-   first-time visitor looks for, so it is worth asking the church for specifically.
+2. **Swap the road-sign photo after 2026-09-07.** The exterior and road sign were
+   supplied on 2026-08-24 and both sit on the visit page, which closes the last
+   content gap. The sign photo shows the changeable-letter panel reading
+   "FALL REVIVAL SEPT 3-7", so it dates itself. After the revival, either replace
+   `img/church-sign.jpg` with a fresh shot or crop the existing source
+   (`source-media/sign.png`) down to the blue name panel, which never goes stale.
 
 **Needs an answer from the church:**
 

@@ -446,6 +446,15 @@ a { color: var(--accent); }
   border-radius: var(--radius); box-shadow: var(--shadow);
 }
 
+/* The road sign is 4:3, so it cannot go in .photo-band without cutting the top or
+   bottom panel off the sign. Held to 520px and centred instead, which keeps the
+   whole sign readable and stops a tall photo dominating the page. */
+.sign-photo { max-width: 520px; margin: 26px auto 0; padding: 0 24px; }
+.sign-photo img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
 /* ---------- gospel ---------- */
 
 .gospel-section {
