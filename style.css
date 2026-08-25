@@ -269,17 +269,19 @@ a { color: var(--accent); }
 
 /* ---------- pastor ---------- */
 
-.pastor-grid { display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; }
+.pastor-grid { display: grid; grid-template-columns: 440px 1fr; gap: 44px; align-items: center; }
 .pastor-grid h2 { font-size: 2rem; }
 .pastor-role { color: var(--accent); font-weight: 600; margin-bottom: 14px; }
 
 /* A real portrait photograph, shown as a portrait rather than squeezed into a
-   circle. The previous 240px circular crop was all the resolution we had; this
-   one is 600px, so it can be shown properly. */
+   circle. The previous 240px circular crop was all the resolution we had.
+   Now 8:9 rather than 3:4: the file itself is cropped 15% off the bottom, below
+   the clasped hands and above the desk, which buys width in the same section
+   instead of height. The column went 280px -> 440px to use it. */
 /* `height: auto` is required: the img's height attribute is a presentational
    hint that otherwise wins over aspect-ratio, which stretched this to 280x800 */
 .pastor-portrait {
-  width: 100%; height: auto; aspect-ratio: 3 / 4;
+  width: 100%; height: auto; aspect-ratio: 8 / 9;
   object-fit: cover; object-position: center top;
   border-radius: var(--radius); box-shadow: var(--shadow-lg);
 }
@@ -622,7 +624,7 @@ a { color: var(--accent); }
   /* stacked: nothing to match heights with, so let the photo be its natural shape */
   .two-col img { height: auto; }
   .pastor-grid { grid-template-columns: 1fr; gap: 24px; }
-  .pastor-portrait { max-width: 300px; margin: 0 auto; }
+  .pastor-portrait { max-width: 360px; margin: 0 auto; }
   .leaders-block { grid-template-columns: 1fr; gap: 22px; padding: 22px; }
   .card-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
