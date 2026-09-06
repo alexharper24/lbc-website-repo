@@ -222,7 +222,11 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
    its alt text is deliberately generic because nobody has confirmed who they are.
    If they are Jared and his wife, the alt text can name them.
 6. **Doctrinal statement sign-off.** Migrated verbatim, but they should confirm it is
-   current.
+   current. **The 19 statements were regrouped on 2026-09-06** under five headings
+   (Foundations, Salvation and the Church, Christian Living, Life and Society, Last
+   Things). Every statement's wording and Scripture list is byte-for-byte unchanged,
+   but the running order is not the order the church supplied. The grouping and the
+   new order both need their sign-off, not just the wording.
 7. **Old Twitter link dropped** (twitter.com/lbcmarion, apparently dormant). Confirm
    Facebook-only is fine, or supply a current profile.
 

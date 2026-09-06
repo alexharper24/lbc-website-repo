@@ -76,6 +76,8 @@ a { color: var(--accent); }
 .container { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 
 .section { padding: 56px 0; background: var(--white); }
+/* not every section deserves identical padding; the gallery earns more air */
+.section-loose { padding: 88px 0; }
 .section-alt { background: var(--base-tint); }
 
 .section-header { text-align: center; margin-bottom: 36px; }
@@ -259,18 +261,20 @@ a { color: var(--accent); }
 
 .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .schedule-col h3 { margin-bottom: 16px; font-size: 1.3rem; }
-.sched-item {
-  display: flex; align-items: center; gap: 16px;
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 14px 18px; margin-bottom: 12px;
+/* Was twelve shadowed white tiles, each led by a rounded pill reading SUN or WED.
+   A service list is a timetable, and a timetable wants ruled rows, not a dozen
+   floating cards. Ruled rows also let the eye run down the day column. */
+.sched-row {
+  display: grid; grid-template-columns: 88px 1fr auto; gap: 16px; align-items: baseline;
+  padding: 13px 0; border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
-.day-badge {
-  min-width: 58px; text-align: center; background: var(--base-tint); color: var(--primary);
-  font-weight: 700; font-size: 0.85rem; border-radius: var(--radius); padding: 8px 6px;
-  font-family: var(--font-head);
+.sched-row:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
+.sched-day {
+  font-family: var(--font-head); font-weight: 600; color: var(--accent);
+  font-size: 0.88rem; letter-spacing: 0.04em;
 }
-.sched-item strong { display: block; font-size: 1rem; }
-.sched-item span { color: var(--text-light); font-size: 0.92rem; }
+.sched-name { font-weight: 500; }
+.sched-when { color: var(--text-light); font-size: 0.92rem; text-align: right; }
 
 /* ---------- pastor ---------- */
 
@@ -301,6 +305,9 @@ a { color: var(--accent); }
 /* ---------- gallery ---------- */
 
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+/* one photo carries the group instead of six identical tiles in lockstep */
+.gallery-item-lead { grid-column: span 2; grid-row: span 2; }
+.gallery-item-lead img { height: 100%; min-height: 500px; }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
   background: var(--white); margin: 0;
@@ -359,6 +366,17 @@ a { color: var(--accent); }
    Collapsed by default so a long page reads as a scannable list of topics.
    Panels use the `hidden` attribute, so they still collapse if CSS fails and
    there is no transition to measure mid-flight. */
+
+/* Nineteen statements in one flat run gave the reader no way in. Grouped under
+   five headings instead of nineteen icons: a doctrinal statement is the last place
+   that wants a row of pictograms, and several of these subjects have no icon that
+   would not read as flippant. The statements themselves are untouched. */
+.belief-group {
+  font-family: var(--font-head); font-size: 1.4rem; color: var(--primary);
+  margin: 42px 0 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-sky-deep);
+}
+.belief-group-first { margin-top: 8px; }
 
 .acc-controls { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 14px; }
 .acc-toggle-all {
@@ -634,6 +652,10 @@ a { color: var(--accent); }
   .card-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .gallery-item img { height: 180px; }
+  .gallery-item-lead { grid-column: span 2; grid-row: auto; }
+  .gallery-item-lead img { min-height: 0; height: 240px; }
+  .sched-row { grid-template-columns: 64px 1fr; gap: 6px 14px; }
+  .sched-when { grid-column: 2; text-align: left; }
   /* One card per row, laid out sideways. Two columns on a phone left each card
      about 150px wide, which squeezed the copy into three-word lines. */
   .expect-list { grid-template-columns: 1fr; gap: 0; }
@@ -678,11 +700,11 @@ a { color: var(--accent); }
   html, body { background-color: #ffffff !important; color: #2d2d2d !important; }
   .section { background-color: #ffffff !important; }
   .section-alt { background-color: var(--base-tint) !important; }
-  .card, .visit-box, .belief-section, .gospel-section, .sched-item,
+  .card, .visit-box, .belief-section, .gospel-section,
   .gallery-item, .acc-item,
   #comingSoonModal .modal-box { background-color: #ffffff !important; }
   .acc-btn:hover, .acc-item.open .acc-btn { background-color: rgba(2, 63, 131, 0.06) !important; }
-  .chip, .day-badge { background-color: var(--base-tint) !important; }
+  .chip { background-color: var(--base-tint) !important; }
   .pastor-avatar { border-color: #ffffff !important; }
   .site-header { background-color: #ffffff !important; }
   .service-band { background-color: var(--base-tint) !important; }
