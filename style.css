@@ -326,9 +326,9 @@ a { color: var(--accent); }
 /* ---------- plan your visit ---------- */
 
 .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
-.visit-box {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px;
-}
+/* the shadowed box did no work the heading and the rule cannot do */
+.visit-box { background: transparent; border-radius: 0; box-shadow: none; padding: 0; }
+.visit-box + .visit-box { padding-top: 0; }
 .visit-box h3 { font-size: 1.3rem; margin-bottom: 14px; }
 .visit-box p { margin-bottom: 12px; }
 .visit-box ul { list-style: none; }
@@ -391,17 +391,22 @@ a { color: var(--accent); }
 .acc-toggle-all:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 .acc-toggle-all:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: 2px; }
 
+/* Was a white card with a radius and a drop shadow, repeated 19 times down the
+   beliefs page. A stack of identical floating cards is the same tell as the tile
+   grids; a list of headings wants rules, not boxes. */
 .acc-item {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  margin-bottom: 12px; overflow: hidden;
+  background: transparent; border-radius: 0; box-shadow: none;
+  margin-bottom: 0; overflow: hidden;
+  border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
-.belief-section.acc-item { padding: 0; margin-bottom: 12px; }
+.acc-item:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
+.belief-section.acc-item { padding: 0; margin-bottom: 0; }
 /* `.belief-section h2` (type + class) outranks a bare `.acc-head`, and its 6px
    bottom margin left a pale strip under the header when the panel was closed */
 .acc-head, .belief-section .acc-head { margin: 0; font-size: 1rem; }
 .acc-btn {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 18px 22px; background: none; border: none; cursor: pointer;
+  gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer;
   font-family: var(--font-head); font-size: 1.12rem; font-weight: 600;
   color: var(--primary); text-align: left; line-height: 1.3;
 }
@@ -413,7 +418,7 @@ a { color: var(--accent); }
 .acc-chevron { flex: 0 0 auto; stroke: var(--accent); transition: transform 0.2s; }
 .acc-item.open .acc-chevron { transform: rotate(180deg); }
 .acc-item.open .acc-btn { background: rgba(2, 63, 131, 0.06); }
-.acc-panel { padding: 4px 22px 22px; }
+.acc-panel { padding: 2px 4px 24px; }
 .acc-panel > *:first-child { margin-top: 0; }
 .acc-panel > *:last-child { margin-bottom: 0; }
 @media (prefers-reduced-motion: reduce) { .acc-chevron { transition: none; } }
@@ -460,8 +465,8 @@ a { color: var(--accent); }
 
 .leaders-block {
   display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: center;
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 28px; margin-top: 30px;
+  background: transparent; border-radius: 0; box-shadow: none;
+  padding: 34px 0 0; margin-top: 34px; border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
 .leaders-block img { width: 100%; height: auto; border-radius: var(--radius); }
 .leaders-block h3 { font-size: 1.3rem; margin-bottom: 10px; }
@@ -504,19 +509,25 @@ a { color: var(--accent); }
 
 /* ---------- gospel ---------- */
 
+/* Five identical white cards, each led by a filled colour chip, is a tile grid
+   turned on its side. The marks earn their place because each one illustrates its
+   step, so they stay, but as line drawings on the page rather than glyphs sitting
+   in coloured squares. The rule carries the separation the card used to. */
 .gospel-section {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 32px; margin-bottom: 20px; display: grid; grid-template-columns: 64px 1fr; gap: 22px;
+  background: transparent; border-radius: 0; box-shadow: none;
+  padding: 30px 0; margin-bottom: 0; display: grid; grid-template-columns: 52px 1fr; gap: 24px;
+  border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
+.gospel-section:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
 .gospel-icon {
-  width: 64px; height: 64px; border-radius: var(--radius);
-  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; background: none; border-radius: 0;
+  display: flex; align-items: flex-start; justify-content: flex-start;
 }
-.gospel-icon svg { stroke: #fff; }
-.gi-navy { background: var(--primary); }
-.gi-red { background: #a83232; }
-.gi-gray { background: #5a6472; }
-.gi-green { background: #2e7d4f; }
+.gospel-icon svg { width: 44px; height: 44px; stroke: currentColor; }
+.gi-navy { color: var(--primary); }
+.gi-red { color: #a83232; }
+.gi-gray { color: #5a6472; }
+.gi-green { color: #2e7d4f; }
 .gospel-sub {
   text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem;
   font-weight: 600; color: var(--accent);
@@ -532,6 +543,12 @@ a { color: var(--accent); }
 .gospel-cta h2 { color: #fff; font-size: 1.6rem; margin-bottom: 10px; }
 .gospel-cta p { color: rgba(255, 255, 255, 0.85); max-width: 38em; margin: 0 auto 22px; }
 .gospel-cta .btn { margin: 0 8px 8px; }
+
+.closing-cta {
+  margin-top: 44px; padding-top: 30px; border-top: 2px solid var(--accent-sky-deep);
+}
+.closing-cta h2 { font-size: 1.45rem; margin-bottom: 8px; }
+.closing-cta p { color: var(--text-light); max-width: 60ch; margin-bottom: 20px; }
 
 /* ---------- scripture pills ---------- */
 
@@ -716,8 +733,7 @@ a { color: var(--accent); }
   html, body { background-color: #ffffff !important; color: #2d2d2d !important; }
   .section { background-color: #ffffff !important; }
   .section-alt { background-color: var(--base-tint) !important; }
-  .card, .visit-box, .belief-section, .gospel-section,
-  .gallery-item, .acc-item,
+  .card, .gallery-item,
   #comingSoonModal .modal-box { background-color: #ffffff !important; }
   .acc-btn:hover, .acc-item.open .acc-btn { background-color: rgba(2, 63, 131, 0.06) !important; }
   .chip { background-color: var(--base-tint) !important; }
