@@ -114,6 +114,11 @@ a { color: var(--accent); }
 .section-header-left { text-align: left; }
 .section-lead { margin-top: 12px; max-width: 62ch; color: var(--text-light); }
 .container-narrow { max-width: 880px; }
+/* A middle measure. The schedule and the pastor block are both two columns of
+   text, and at the full 1272 the service names sat a long way from their times
+   while the pastor's copy ran past a comfortable line length. 1040 centres them
+   and pulls both columns back together without making the page feel narrow. */
+.container-mid { max-width: 1040px; }
 .section-header h2 { font-size: 2rem; }
 
 /* Decorative heading rules were removed after review. The material character
@@ -478,9 +483,10 @@ a { color: var(--accent); }
    would not read as flippant. The statements themselves are untouched. */
 .belief-group {
   font-family: var(--font-head); font-size: 1.4rem; color: var(--primary);
-  margin: 42px 0 16px; padding-bottom: 10px;
-  border-bottom: 3px double var(--accent-sky-deep);
+  margin: 46px 0 4px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-sky-deep);
 }
+
 .belief-group-first { margin-top: 8px; }
 
 .acc-controls { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 14px; }
@@ -498,10 +504,13 @@ a { color: var(--accent); }
 .acc-item {
   background: transparent; border-radius: 0; box-shadow: none;
   margin-bottom: 0; overflow: hidden;
-  border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
-.acc-item:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
-.acc-item.open { border-top-color: var(--accent-sky-deep); }
+/* Rules sit BETWEEN statements. The run is closed by whatever follows it, which is
+   deterministic here: .closing-cta already draws its own 2px rule on beliefs, and
+   the visit page's button row gets one below. A :last-of-type rule was used before
+   and silently matched nothing, because the last div sibling is not a statement. */
+.acc-item + .acc-item { border-top: 1px solid rgba(2, 63, 131, 0.14); }
+.acc-item + .btn-row { border-top: 1px solid rgba(2, 63, 131, 0.14); padding-top: 26px; }
 .belief-section.acc-item { padding: 0; margin-bottom: 0; }
 /* `.belief-section h2` (type + class) outranks a bare `.acc-head`, and its 6px
    bottom margin left a pale strip under the header when the panel was closed */
