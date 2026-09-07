@@ -607,16 +607,15 @@ a { color: var(--accent); }
    in coloured squares. The rule carries the separation the card used to. */
 .gospel-section {
   background: transparent; border-radius: 0; box-shadow: none;
-  padding: 30px 0; margin-bottom: 0; display: grid; grid-template-columns: 52px 1fr; gap: 24px;
+  padding: 30px 0; margin-bottom: 0;
   border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
 .gospel-section:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
 .gospel-icon {
-  width: 52px; height: 52px; background: none; border-radius: 0;
-  display: flex; align-items: flex-start; justify-content: flex-start;
-  padding-top: 3px;
+  flex: 0 0 auto; width: 32px; height: 32px; background: none; border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-.gospel-icon svg { width: 44px; height: 44px; stroke: currentColor; }
+.gospel-icon svg { width: 32px; height: 32px; stroke: currentColor; }
 .gi-navy { color: var(--primary); }
 .gi-red { color: #a83232; }
 .gi-gray { color: #5a6472; }
@@ -625,7 +624,14 @@ a { color: var(--accent); }
   text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem;
   font-weight: 600; color: var(--accent);
 }
-.gospel-section h2 { font-size: 1.5rem; margin: 2px 0 10px; }
+/* The mark used to sit in its own 52px column, stranded out in the margin with
+   nothing else in it. It now rides with the heading, sized to the cap height, so
+   it reads as part of the line instead of a floating bullet. */
+.gospel-section h2 {
+  font-size: 1.5rem; margin: 2px 0 10px;
+  display: flex; align-items: center; gap: 13px;
+}
+.gospel-title { display: block; }
 .gospel-section p { margin-bottom: 12px; }
 
 /* gospel CTA: intentionally dark card, protected in the dark-mode block below */
