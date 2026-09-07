@@ -400,6 +400,7 @@ a { color: var(--accent); }
   border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
 .acc-item:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
+.acc-item.open { border-top-color: var(--accent-sky-deep); }
 .belief-section.acc-item { padding: 0; margin-bottom: 0; }
 /* `.belief-section h2` (type + class) outranks a bare `.acc-head`, and its 6px
    bottom margin left a pale strip under the header when the panel was closed */
@@ -413,11 +414,11 @@ a { color: var(--accent); }
 /* A faint navy wash, NOT --base-tint: the tint is now the section background, so
    tinting the header made the row look like a hole in the page instead of a
    highlighted card. This stays distinct whatever the tint is set to. */
-.acc-btn:hover { background: rgba(2, 63, 131, 0.06); }
+.acc-btn:hover { background: rgba(2, 63, 131, 0.05); }
 .acc-btn:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: -3px; }
 .acc-chevron { flex: 0 0 auto; stroke: var(--accent); transition: transform 0.2s; }
 .acc-item.open .acc-chevron { transform: rotate(180deg); }
-.acc-item.open .acc-btn { background: rgba(2, 63, 131, 0.06); }
+.acc-item.open .acc-btn { background: transparent; color: var(--primary); }
 .acc-panel { padding: 2px 4px 24px; }
 .acc-panel > *:first-child { margin-top: 0; }
 .acc-panel > *:last-child { margin-bottom: 0; }
