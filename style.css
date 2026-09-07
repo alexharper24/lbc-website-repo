@@ -48,8 +48,13 @@
      used only in hairlines, like the brass frame around a lighthouse lens. */
   --structural-line: rgba(28, 63, 99, 0.22);
   --structural-line-soft: rgba(28, 63, 99, 0.12);
-  --metal: #233b4b;
-  --metal-dark: #0b2638;
+  /* The single dark field colour. Header, footer, mobile nav and the gospel panel
+     all use this one value, so two large dark blues can never sit against each
+     other slightly mismatched again. --primary stays the brand navy for text,
+     buttons and marks; --primary-dark is only the pressed state of a button. */
+  --field-dark: #0b2638;
+  --scrim-top: rgba(11, 38, 56, 0.94);
+  --scrim-deep: rgba(2, 42, 82, 0.88);
   --stone-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' seed='11'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='.035'/%3E%3C/svg%3E");
   --timber-grain:
     repeating-linear-gradient(92deg, rgba(139, 112, 73, 0.035) 0 1px, transparent 1px 17px),
@@ -161,10 +166,14 @@ a { color: var(--accent); }
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background-color: var(--metal-dark);
-  background-image: var(--metal-corrugation);
+  background-color: var(--field-dark);
+  /* No downward shadow and no corrugation. The shadow drew a dark line straight
+     across the top of every hero, and the corrugation's vertical gradient ended in
+     8% black, so the header's own bottom edge was darker than the field colour it
+     was supposed to be. Flat bar into flat hero top is what actually joins. */
+  background-image: none;
   border-bottom: 0;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -179,7 +188,7 @@ a { color: var(--accent); }
 .main-nav a:hover, .main-nav a.active { color: var(--accent-sky-light); }
 .main-nav .btn { padding: 9px 20px; min-width: 0; }
 .site-header .main-nav .btn {
-  background: var(--accent-sky-light); color: var(--metal-dark) !important;
+  background: var(--accent-sky-light); color: var(--field-dark) !important;
   border-color: var(--accent-sky-light);
 }
 .site-header .main-nav .btn:hover { background: #fff; border-color: #fff; }
@@ -191,7 +200,7 @@ a { color: var(--accent); }
 
 .mobile-nav {
   display: none; position: fixed; inset: 0; z-index: 200;
-  background-color: var(--metal-dark); background-image: var(--metal-corrugation); padding: 24px;
+  background-color: var(--field-dark); background-image: var(--metal-corrugation); padding: 24px;
   overflow-y: auto;
 }
 .mobile-nav.open { display: flex; flex-direction: column; }
@@ -224,10 +233,10 @@ a { color: var(--accent); }
 .hero-overlay {
   position: absolute; inset: 0;
   background-image: linear-gradient(180deg,
-    rgb(11, 38, 56) 0,
-    rgba(11, 38, 56, 0.92) 16px,
-    rgba(1, 30, 62, 0.78) 96px,
-    rgba(1, 32, 66, 0.86) 100%);
+    var(--field-dark) 0,
+    var(--scrim-top) 16px,
+    var(--scrim-deep) 96px,
+    var(--scrim-deep) 100%);
 }
 .hero-content {
   position: relative; z-index: 1; text-align: center;
@@ -422,10 +431,10 @@ a { color: var(--accent); }
      Source and credit are recorded in the README. */
   background-image:
     linear-gradient(180deg,
-      rgb(11, 38, 56) 0,
-      rgba(11, 38, 56, 0.94) 14px,
-      rgba(1, 30, 62, 0.82) 78px,
-      rgba(1, 32, 66, 0.88) 100%),
+      var(--field-dark) 0,
+      var(--scrim-top) 14px,
+      var(--scrim-deep) 78px,
+      var(--scrim-deep) 100%),
     url("img/ocean-hero.jpg");
   background-size: auto, cover;
   background-position: center, center 62%;
@@ -650,7 +659,7 @@ a { color: var(--accent); }
 /* gospel CTA: intentionally dark card, protected in the dark-mode block below */
 .gospel-cta {
   position: relative;
-  background-color: var(--metal-dark); background-image: var(--metal-corrugation);
+  background-color: var(--field-dark); background-image: var(--metal-corrugation);
   border: 0; border-radius: var(--radius); padding: 40px 32px;
   text-align: center; margin-top: 32px;
   box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.035), var(--shadow-lg);
@@ -708,7 +717,7 @@ a { color: var(--accent); }
 
 .site-footer {
   position: relative;
-  background-color: var(--primary-dark);
+  background-color: var(--field-dark);
   background-image:
     radial-gradient(ellipse at 12% 0%, rgba(143, 211, 240, 0.13), transparent 34%),
     var(--stone-grain);
@@ -805,10 +814,10 @@ a { color: var(--accent); }
   /* the photo crops tighter on a phone, bringing brighter areas behind the text */
   .hero-overlay {
     background-image: linear-gradient(180deg,
-      rgb(11, 38, 56) 0,
-      rgba(11, 38, 56, 0.92) 16px,
-      rgba(1, 30, 62, 0.82) 96px,
-      rgba(1, 32, 66, 0.90) 100%);
+      var(--field-dark) 0,
+      var(--scrim-top) 16px,
+      var(--scrim-deep) 96px,
+      var(--scrim-deep) 100%);
   }
   .hero-bg { object-position: center 40%; }
   /* the middle measure is for centring on a wide screen; on a phone it would just
@@ -883,19 +892,19 @@ a { color: var(--accent); }
   .acc-btn:hover, .acc-item.open .acc-btn { background-color: rgba(2, 63, 131, 0.06) !important; }
   .chip { background-color: var(--base-tint) !important; }
   .pastor-avatar { border-color: #ffffff !important; }
-  .site-header { background-color: var(--metal-dark) !important; }
+  .site-header { background-color: var(--field-dark) !important; }
   .service-band { background-color: var(--base-tint) !important; }
   .contact-form input, .contact-form textarea { background-color: var(--surface-paper) !important; color: var(--text) !important; }
   /* intentionally dark elements keep their brand color */
   .hero-full, .page-hero { background-color: var(--primary) !important; }
-  .gospel-cta { background-color: var(--metal-dark) !important; }
+  .gospel-cta { background-color: var(--field-dark) !important; }
   .hero-overlay {
     background-image:
-      linear-gradient(180deg, rgb(11,38,56) 0, rgba(11,38,56,0.92) 16px,
-        rgba(1,30,62,0.78) 96px, rgba(1,32,66,0.86) 100%) !important;
+      linear-gradient(180deg, var(--field-dark) 0, var(--scrim-top) 16px,
+        var(--scrim-deep) 96px, var(--scrim-deep) 100%) !important;
   }
-  .site-footer { background-color: var(--primary-dark) !important; }
-  .mobile-nav { background-color: var(--metal-dark) !important; }
+  .site-footer { background-color: var(--field-dark) !important; }
+  .mobile-nav { background-color: var(--field-dark) !important; }
   .card-icon, .gi-navy { background-color: var(--primary) !important; }
   .card-icon-sky { background-color: var(--accent-sky) !important; }
   .gi-red { background-color: #a83232 !important; }
@@ -906,7 +915,7 @@ a { color: var(--accent); }
 @media (prefers-color-scheme: dark) and (max-width: 900px) {
   .hero-overlay {
     background-image:
-      linear-gradient(180deg, rgb(11,38,56) 0, rgba(11,38,56,0.92) 16px,
-        rgba(1,30,62,0.82) 96px, rgba(1,32,66,0.90) 100%) !important;
+      linear-gradient(180deg, var(--field-dark) 0, var(--scrim-top) 16px,
+        var(--scrim-deep) 96px, var(--scrim-deep) 100%) !important;
   }
 }
