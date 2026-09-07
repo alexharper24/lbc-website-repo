@@ -25,6 +25,14 @@ channel; the old site's YouTube icon pointed at youtube.com's homepage) and
 
 ## Design decisions (do not "fix" these back)
 
+- **The lighthouse character lives in broad surfaces and light, not ornament.** The
+  production site uses quiet stone grain on page grounds, salt-dried timber grain on
+  cards and controls, ribbed dark metal in the navigation and Gospel callout, and
+  salt-streaked glass with Fresnel rings and cast beams in the heroes. An earlier pass
+  added segmented heading marks, painted transition bands, photo frames, masonry
+  joints, rivets, and oxidized borders. Those details were removed after visual review
+  because the repetition felt tacky and competed with the church's content. The former
+  `texture-preview.html` comparison page was also removed.
 - **The palette is measured, not eyeballed.** The logo's sky blue `#42a6d7` cannot
   carry small text anywhere on this site, so three derived tokens do that work and
   the raw logo colour is reserved for large graphics:

@@ -1,8 +1,10 @@
 /* ==========================================================================
    Lighthouse Baptist Church - Marion, IN
    Design brief: royal navy / harbor blue / sea-mist tint, Bitter + Work Sans,
-   sky-blue wave rule motif, full-bleed hero with centred text, alternating
-   white / tint rhythm, 8px radius.
+   full-bleed hero with centred text, and a restrained lighthouse material
+   language: weathered stone grain, salt-streaked glass, ribbed metal and cast
+   light. Texture stays in broad surfaces rather than decorative borders or
+   repeated ornaments.
 
    The logo's sky blue #42a6d7 cannot carry small text anywhere on this site, so
    three derived tokens do that job and #42a6d7 is reserved for large graphics.
@@ -33,13 +35,29 @@
   --text: #2d2d2d;
   --text-light: #5a5a5a;
   --white: #ffffff;
+  --surface-stone: #f7f4ec;
+  --surface-paper: #fffdf8;
   /* One dial for page width. The header and hero were already 1240 while the
      content container sat at 1100, so content ran narrower than the bar above it
      and left dead margin on wide screens. Everything now shares this token. */
   --content-max: 1320px;
-  --radius: 8px;
+  --radius: 4px;
   --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
+  /* Supporting material accents, not a second brand palette. The warm detail is
+     used only in hairlines, like the brass frame around a lighthouse lens. */
+  --structural-line: rgba(28, 63, 99, 0.22);
+  --structural-line-soft: rgba(28, 63, 99, 0.12);
+  --metal: #233b4b;
+  --metal-dark: #0b2638;
+  --stone-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' seed='11'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='.035'/%3E%3C/svg%3E");
+  --salt-streaks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='220' viewBox='0 0 260 220'%3E%3Cg fill='none' stroke='%23051629' stroke-linecap='round'%3E%3Cpath d='M26 0c5 31-7 56 1 92s-2 78 5 128' opacity='.15' stroke-width='5'/%3E%3Cpath d='M91 0c-7 29 4 52-3 78s5 55-1 92' opacity='.1' stroke-width='3'/%3E%3Cpath d='M176 0c6 24-5 47 2 71s-3 63 2 101' opacity='.12' stroke-width='4'/%3E%3Cpath d='M231 0c-5 18 3 37-2 59s4 41 0 69' opacity='.08' stroke-width='2'/%3E%3C/g%3E%3Cg fill='%23051629'%3E%3Ccircle cx='55' cy='39' r='2' opacity='.12'/%3E%3Ccircle cx='143' cy='27' r='1.5' opacity='.1'/%3E%3Ccircle cx='211' cy='98' r='2.2' opacity='.1'/%3E%3Ccircle cx='118' cy='164' r='1.8' opacity='.12'/%3E%3C/g%3E%3C/svg%3E");
+  --timber-grain:
+    repeating-linear-gradient(92deg, rgba(139, 112, 73, 0.035) 0 1px, transparent 1px 17px),
+    repeating-linear-gradient(88deg, transparent 0 29px, rgba(35, 59, 75, 0.025) 29px 30px);
+  --metal-corrugation:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 13px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(0, 0, 0, 0.08));
   --font-head: 'Bitter', Georgia, serif;
   --font-body: 'Work Sans', Arial, sans-serif;
 }
@@ -52,7 +70,8 @@ body {
   font-family: var(--font-body);
   color: var(--text);
   line-height: 1.6;
-  background: var(--white);
+  background-color: var(--surface-stone);
+  background-image: var(--stone-grain);
   font-size: 17px;
 }
 
@@ -75,10 +94,19 @@ a { color: var(--accent); }
 
 .container { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
 
-.section { padding: 56px 0; background: var(--white); }
+.section {
+  padding: 56px 0;
+  background-color: var(--surface-stone);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.38)),
+    var(--stone-grain);
+}
 /* not every section deserves identical padding; the gallery earns more air */
 .section-loose { padding: 88px 0; }
-.section-alt { background: var(--base-tint); }
+.section-alt {
+  background-color: var(--base-tint);
+  background-image: var(--stone-grain);
+}
 
 .section-header { text-align: center; margin-bottom: 36px; }
 /* Left-aligned section heads. Every heading on the site being centred is part of
@@ -88,15 +116,16 @@ a { color: var(--accent); }
 .container-narrow { max-width: 880px; }
 .section-header h2 { font-size: 2rem; }
 
-/* wave rule motif: short sky-blue wavy line under section headings */
+/* Decorative heading rules were removed after review. The material character
+   now comes from surfaces and light rather than repeated marks. */
 .wave-rule {
-  display: block;
-  width: 64px;
-  height: 10px;
-  margin: 12px auto 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='10' viewBox='0 0 64 10'%3E%3Cpath d='M1 5 Q9 1 17 5 T33 5 T49 5 T63 5' fill='none' stroke='%232789b9' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  display: none;
+}
+.wave-rule::after {
+  content: none;
 }
 .wave-rule-left { margin-left: 0; }
+.hero-full .wave-rule, .page-hero .wave-rule { --rule-color: var(--accent-sky-light); }
 
 /* ---------- buttons ---------- */
 
@@ -105,9 +134,13 @@ a { color: var(--accent); }
   padding: 12px 28px; border-radius: var(--radius); font-weight: 600;
   font-family: var(--font-body); font-size: 1rem;
   text-decoration: none; cursor: pointer; transition: background 0.2s, color 0.2s;
-  border: 2px solid transparent; min-width: 170px;
+  border: 2px solid transparent; min-width: 170px; letter-spacing: 0.01em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 2px 0 rgba(11, 38, 56, 0.16);
 }
-.btn-primary { background: var(--primary); color: #fff !important; border-color: var(--primary); }
+.btn-primary {
+  background-color: var(--primary); color: #fff !important; border-color: var(--primary);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.08));
+}
 .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
 .btn-outline:hover { background: var(--primary); color: #fff; }
@@ -124,8 +157,10 @@ a { color: var(--accent); }
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: var(--white);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+  background-color: var(--metal-dark);
+  background-image: var(--metal-corrugation);
+  border-bottom: 0;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -135,19 +170,24 @@ a { color: var(--accent); }
 
 .main-nav { display: flex; align-items: center; gap: 22px; }
 .main-nav a {
-  color: var(--primary); text-decoration: none; font-weight: 500; font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.9); text-decoration: none; font-weight: 500; font-size: 0.98rem;
 }
-.main-nav a:hover, .main-nav a.active { color: var(--accent); }
+.main-nav a:hover, .main-nav a.active { color: var(--accent-sky-light); }
 .main-nav .btn { padding: 9px 20px; min-width: 0; }
+.site-header .main-nav .btn {
+  background: var(--accent-sky-light); color: var(--metal-dark) !important;
+  border-color: var(--accent-sky-light);
+}
+.site-header .main-nav .btn:hover { background: #fff; border-color: #fff; }
 
 .nav-toggle {
   display: none; background: none; border: none; cursor: pointer; padding: 10px;
 }
-.nav-toggle svg { display: block; }
+.nav-toggle svg { display: block; stroke: #fff; }
 
 .mobile-nav {
   display: none; position: fixed; inset: 0; z-index: 200;
-  background: var(--primary); padding: 24px;
+  background-color: var(--metal-dark); background-image: var(--metal-corrugation); padding: 24px;
   overflow-y: auto;
 }
 .mobile-nav.open { display: flex; flex-direction: column; }
@@ -179,17 +219,35 @@ a { color: var(--accent); }
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(1, 30, 62, 0.78) 0%,
-    rgba(1, 32, 66, 0.86) 100%);
+  background-image:
+    var(--salt-streaks),
+    linear-gradient(to bottom,
+      rgba(1, 30, 62, 0.78) 0%,
+      rgba(1, 32, 66, 0.86) 100%);
+  background-size: 260px 220px, auto;
 }
 .hero-content {
   position: relative; z-index: 1; text-align: center;
   max-width: var(--content-max); margin: 0 auto; width: 100%; padding: 72px 24px;
 }
+.hero-content::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%; top: 50%;
+  width: min(68vw, 720px); aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle,
+    transparent 0 46px,
+    rgba(143, 211, 240, 0.12) 47px,
+    transparent 49px 66px);
+  mask-image: radial-gradient(circle, #000 0 42%, transparent 74%);
+  pointer-events: none;
+}
 /* wide enough that the church name sits on one line at desktop sizes;
    the tagline is capped separately so it still reads as a short line */
-.hero-copy { max-width: 44em; margin: 0 auto; }
+.hero-copy { position: relative; z-index: 1; max-width: 44em; margin: 0 auto; }
 .hero-town {
   color: var(--accent-sky-light); font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px;
@@ -203,7 +261,14 @@ a { color: var(--accent); }
 /* ---------- service times band ---------- */
 
 .service-band {
-  background: var(--base-tint); padding: 26px 0; border-top: 4px solid var(--accent-sky);
+  position: relative;
+  background-color: var(--base-tint);
+  background-image: var(--stone-grain);
+  padding: 26px 0;
+  border-top: 0;
+}
+.service-band::before {
+  content: none;
 }
 .service-band-inner {
   display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
@@ -211,7 +276,16 @@ a { color: var(--accent); }
 }
 .service-band .svc { color: var(--primary); }
 .service-band .svc strong { display: block; font-family: var(--font-head); font-size: 1.05rem; }
+.service-band .svc strong::before {
+  content: none;
+}
 .service-band .svc span { font-size: 0.95rem; color: var(--text-light); }
+.service-band .svc + .svc {
+  position: relative;
+}
+.service-band .svc + .svc::before {
+  content: none;
+}
 
 /* ---------- welcome ---------- */
 
@@ -225,6 +299,7 @@ a { color: var(--accent); }
 .two-col p { margin-bottom: 14px; }
 .two-col img {
   border-radius: var(--radius); box-shadow: var(--shadow);
+  border: 0; outline: 0;
   width: 100%; height: 100%; object-fit: cover; object-position: center;
 }
 
@@ -232,10 +307,17 @@ a { color: var(--accent); }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .card {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  position: relative;
+  background-color: var(--surface-paper); background-image: var(--timber-grain);
+  border-radius: var(--radius);
+  border: 0;
+  box-shadow: var(--shadow);
   padding: 28px; display: flex; flex-direction: column;
 }
-.section-alt .card { background: var(--white); }
+.card::after {
+  content: none;
+}
+.section-alt .card { background-color: var(--surface-paper); }
 .card h3 { font-size: 1.25rem; margin: 14px 0 8px; }
 /* every paragraph used to carry flex-grow, which split the free space between
    them instead of leaving a gap after each one, so multi-paragraph cards read as
@@ -296,11 +378,13 @@ a { color: var(--accent); }
 .pastor-portrait {
   width: 100%; height: auto; aspect-ratio: 8 / 9;
   object-fit: cover; object-position: center top;
+  border: 0; outline: 0;
   border-radius: var(--radius); box-shadow: var(--shadow-lg);
 }
 .pastor-family { margin: 36px 0 0; }
 .pastor-family img {
-  width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow);
+  width: 100%; height: auto; border: 0; outline: 0;
+  border-radius: var(--radius); box-shadow: var(--shadow);
 }
 .pastor-family figcaption {
   margin-top: 10px; text-align: center; font-size: 0.92rem; color: var(--text-light);
@@ -314,6 +398,7 @@ a { color: var(--accent); }
 .gallery-item-lead img { height: 100%; min-height: 500px; }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  border: 0; outline: 0;
   background: var(--white); margin: 0;
 }
 .gallery-item img { width: 100%; height: 240px; object-fit: cover; }
@@ -339,7 +424,23 @@ a { color: var(--accent); }
 
 /* ---------- page hero (interior pages) ---------- */
 
-.page-hero { background: var(--primary); padding: 48px 0; text-align: center; }
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary);
+  background-image:
+    var(--salt-streaks),
+    repeating-radial-gradient(circle at 18% 52%, transparent 0 42px, rgba(143, 211, 240, 0.075) 43px, transparent 45px 62px),
+    linear-gradient(104deg, transparent 0 55%, rgba(143, 211, 240, 0.12) 56% 64%, transparent 65%),
+    radial-gradient(circle at 18% 0%, rgba(143, 211, 240, 0.22), transparent 38%);
+  background-size: 260px 220px, auto, auto, auto;
+  padding: 48px 0;
+  text-align: center;
+}
+.page-hero::after {
+  content: none;
+}
+.page-hero .container { position: relative; z-index: 1; }
 .page-hero h1 { color: #fff; font-size: 2.3rem; }
 .page-hero p { color: rgba(255, 255, 255, 0.85); margin-top: 8px; max-width: 40em; margin-left: auto; margin-right: auto; }
 .page-hero .wave-rule { margin-top: 16px; }
@@ -378,7 +479,7 @@ a { color: var(--accent); }
 .belief-group {
   font-family: var(--font-head); font-size: 1.4rem; color: var(--primary);
   margin: 42px 0 16px; padding-bottom: 10px;
-  border-bottom: 2px solid var(--accent-sky-deep);
+  border-bottom: 3px double var(--accent-sky-deep);
 }
 .belief-group-first { margin-top: 8px; }
 
@@ -469,7 +570,10 @@ a { color: var(--accent); }
   background: transparent; border-radius: 0; box-shadow: none;
   padding: 34px 0 0; margin-top: 34px; border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
-.leaders-block img { width: 100%; height: auto; border-radius: var(--radius); }
+.leaders-block img {
+  width: 100%; height: auto; border: 0; outline: 0;
+  border-radius: var(--radius);
+}
 .leaders-block h3 { font-size: 1.3rem; margin-bottom: 10px; }
 
 /* ---------- photo band (breaks up a text-heavy page) ----------
@@ -492,6 +596,7 @@ a { color: var(--accent); }
      keeps the same 45% crop centre, so nothing new is trimmed off the subject. */
   max-height: 520px;
   object-fit: cover; object-position: center 45%;
+  border: 0; outline: 0;
   border-radius: var(--radius); box-shadow: var(--shadow);
 }
 
@@ -503,7 +608,7 @@ a { color: var(--accent); }
   display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
 }
 .wayfinding img {
-  width: 100%; height: auto; display: block;
+  width: 100%; height: auto; display: block; border: 0; outline: 0;
   border-radius: var(--radius); box-shadow: var(--shadow);
 }
 @media (max-width: 760px) { .wayfinding { grid-template-columns: 1fr; } }
@@ -538,9 +643,17 @@ a { color: var(--accent); }
 
 /* gospel CTA: intentionally dark card, protected in the dark-mode block below */
 .gospel-cta {
-  background: var(--primary); border-radius: var(--radius); padding: 40px 32px;
+  position: relative;
+  background-color: var(--metal-dark); background-image: var(--metal-corrugation);
+  border: 0; border-radius: var(--radius); padding: 40px 32px;
   text-align: center; margin-top: 32px;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.035), var(--shadow-lg);
 }
+.gospel-cta::before, .gospel-cta::after {
+  content: none;
+}
+.gospel-cta::before { left: 12px; }
+.gospel-cta::after { right: 12px; }
 .gospel-cta h2 { color: #fff; font-size: 1.6rem; margin-bottom: 10px; }
 .gospel-cta p { color: rgba(255, 255, 255, 0.85); max-width: 38em; margin: 0 auto 22px; }
 .gospel-cta .btn { margin: 0 8px 8px; }
@@ -554,14 +667,16 @@ a { color: var(--accent); }
 /* ---------- scripture pills ---------- */
 
 .scripture {
-  display: inline-block; background: var(--base-tint); color: var(--primary);
-  border: 1px solid #c2d5e5; border-radius: 999px; padding: 3px 12px;
+  display: inline-block; background-color: var(--surface-paper); background-image: var(--timber-grain); color: var(--primary);
+  border: 1px solid var(--structural-line); border-radius: 3px; padding: 3px 12px;
   font-size: 0.85rem; font-weight: 600; margin: 3px 4px 3px 0; cursor: pointer;
+  box-shadow: inset 0 -2px 0 rgba(139, 112, 73, 0.12);
 }
 .scripture:hover, .scripture.verse-active { background: var(--primary); color: #fff; }
 .scripture:focus-visible { outline: 3px solid var(--accent-sky); outline-offset: 2px; }
 .verse-expanded {
-  background: var(--base-tint); border-left: 3px solid var(--accent-sky-deep);
+  background-color: var(--base-tint); background-image: var(--stone-grain);
+  border-left: 3px solid var(--accent-sky-deep);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 14px 16px; margin: 10px 0; font-size: 0.95rem;
 }
@@ -574,7 +689,8 @@ a { color: var(--accent); }
 .contact-form label { display: block; font-weight: 600; margin: 14px 0 5px; color: var(--primary); }
 .contact-form input, .contact-form textarea {
   width: 100%; padding: 11px 14px; border: 1px solid #c9d6e2; border-radius: var(--radius);
-  font-family: var(--font-body); font-size: 1rem; background: #fff; color: var(--text);
+  font-family: var(--font-body); font-size: 1rem;
+  background-color: var(--surface-paper); background-image: var(--timber-grain); color: var(--text);
 }
 .contact-form input:focus, .contact-form textarea:focus {
   outline: 2px solid var(--accent-sky); border-color: var(--accent-sky);
@@ -584,7 +700,19 @@ a { color: var(--accent); }
 
 /* ---------- footer ---------- */
 
-.site-footer { background: var(--primary-dark); color: rgba(255, 255, 255, 0.85); padding: 48px 0 0; }
+.site-footer {
+  position: relative;
+  background-color: var(--primary-dark);
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgba(143, 211, 240, 0.13), transparent 34%),
+    var(--stone-grain);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 48px 0 0;
+  border-top: 0;
+}
+.site-footer::before {
+  content: none;
+}
 /* Column widths are set from measured line lengths, not eyeballed: the service
    times and contact details are the longest strings and were each wrapping onto
    a second line for one trailing word. */
@@ -621,6 +749,7 @@ a { color: var(--accent); }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15); padding: 18px 0; text-align: center;
   font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);
+  background-image: none;
 }
 
 /* ---------- coming soon modal ---------- */
@@ -669,10 +798,13 @@ a { color: var(--accent); }
   .hero-copy h1 { font-size: 2.2rem; }
   /* the photo crops tighter on a phone, bringing brighter areas behind the text */
   .hero-overlay {
-    background: linear-gradient(to bottom,
-      rgba(1, 30, 62, 0.82) 0%,
-      rgba(1, 32, 66, 0.90) 100%);
+    background-image:
+      var(--salt-streaks),
+      linear-gradient(to bottom,
+        rgba(1, 30, 62, 0.82) 0%,
+        rgba(1, 32, 66, 0.90) 100%);
   }
+  .hero-content::before { width: 620px; opacity: 0.62; }
   .hero-bg { object-position: center 40%; }
   .two-col, .schedule-grid, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
   /* stacked: nothing to match heights with, so let the photo be its natural shape */
@@ -698,6 +830,10 @@ a { color: var(--accent); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 40px 0; }
   .service-band-inner { gap: 18px; flex-direction: column; }
+  .service-band .svc + .svc { padding-left: 0; padding-top: 0; }
+  .service-band .svc + .svc::before {
+    content: none;
+  }
 }
 
 @media (max-width: 560px) {
@@ -724,32 +860,45 @@ a { color: var(--accent); }
 @media print {
   .site-header, .mobile-nav, .site-footer, .hero-buttons, .btn, .nav-toggle,
   #comingSoonModal { display: none !important; }
-  body { font-size: 12pt; color: #000; }
+  body { font-size: 12pt; color: #000; background: #fff; }
   .section, .section-alt { padding: 12pt 0; background: #fff; }
 }
 
 /* ---------- light-mode lock: dark-mode overrides ---------- */
 
 @media (prefers-color-scheme: dark) {
-  html, body { background-color: #ffffff !important; color: #2d2d2d !important; }
-  .section { background-color: #ffffff !important; }
+  html, body { background-color: var(--surface-stone) !important; color: #2d2d2d !important; }
+  .section { background-color: var(--surface-stone) !important; }
   .section-alt { background-color: var(--base-tint) !important; }
   .card, .gallery-item,
-  #comingSoonModal .modal-box { background-color: #ffffff !important; }
+  #comingSoonModal .modal-box { background-color: var(--surface-paper) !important; }
   .acc-btn:hover, .acc-item.open .acc-btn { background-color: rgba(2, 63, 131, 0.06) !important; }
   .chip { background-color: var(--base-tint) !important; }
   .pastor-avatar { border-color: #ffffff !important; }
-  .site-header { background-color: #ffffff !important; }
+  .site-header { background-color: var(--metal-dark) !important; }
   .service-band { background-color: var(--base-tint) !important; }
-  .contact-form input, .contact-form textarea { background-color: #ffffff !important; color: var(--text) !important; }
+  .contact-form input, .contact-form textarea { background-color: var(--surface-paper) !important; color: var(--text) !important; }
   /* intentionally dark elements keep their brand color */
-  .hero-full, .page-hero, .gospel-cta { background-color: var(--primary) !important; }
-  .hero-overlay { background-image: linear-gradient(to bottom, rgba(1,30,62,0.78) 0%, rgba(1,32,66,0.86) 100%) !important; }
+  .hero-full, .page-hero { background-color: var(--primary) !important; }
+  .gospel-cta { background-color: var(--metal-dark) !important; }
+  .hero-overlay {
+    background-image:
+      var(--salt-streaks),
+      linear-gradient(to bottom, rgba(1,30,62,0.78) 0%, rgba(1,32,66,0.86) 100%) !important;
+  }
   .site-footer { background-color: var(--primary-dark) !important; }
-  .mobile-nav { background-color: var(--primary) !important; }
+  .mobile-nav { background-color: var(--metal-dark) !important; }
   .card-icon, .gi-navy { background-color: var(--primary) !important; }
   .card-icon-sky { background-color: var(--accent-sky) !important; }
   .gi-red { background-color: #a83232 !important; }
   .gi-gray { background-color: #5a6472 !important; }
   .gi-green { background-color: #2e7d4f !important; }
+}
+
+@media (prefers-color-scheme: dark) and (max-width: 900px) {
+  .hero-overlay {
+    background-image:
+      var(--salt-streaks),
+      linear-gradient(to bottom, rgba(1,30,62,0.82) 0%, rgba(1,32,66,0.90) 100%) !important;
+  }
 }
