@@ -344,17 +344,12 @@ a { color: var(--accent); }
 /* ---------- schedule ---------- */
 
 .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-/* Both columns are already the same height, because the grid stretches them. What
-   did not match was the content: the left column ran out about 160px early and left
-   a hole under it. Each column is now a flex column whose list absorbs the spare
-   height, so the two run top to bottom together and their rules stay evenly spaced
-   instead of the gap collecting at the bottom of the shorter one. */
+/* Rows keep their natural height rather than stretching to fill, so the timetable
+   stays tight. The trailing button is pushed to the bottom of its column instead,
+   which lines it up with the foot of whichever column is taller. */
 .schedule-col { display: flex; flex-direction: column; }
 .schedule-col h3 { margin-bottom: 16px; font-size: 1.3rem; flex: 0 0 auto; }
-.schedule-col .sched-row { flex: 1 1 auto; align-items: center; }
-.schedule-col .expect-list { flex: 1 1 auto; }
-.schedule-col .expect-list > div { display: flex; flex-direction: column; justify-content: center; }
-.schedule-col > p:last-child { flex: 0 0 auto; }
+.schedule-col > p:last-child { margin-top: auto; padding-top: 22px; }
 /* Was twelve shadowed white tiles, each led by a rounded pill reading SUN or WED.
    A service list is a timetable, and a timetable wants ruled rows, not a dozen
    floating cards. Ruled rows also let the eye run down the day column. */
