@@ -364,10 +364,8 @@ a { color: var(--accent); }
 /* the button shares its row with the last service, so centre it in whatever
    height that row settles on */
 .know-cta { display: flex; align-items: center; }
-/* close both columns: the fifth and tenth children are the last cell in each */
-.schedule-grid > :nth-child(5), .schedule-grid > :nth-child(10) {
-  border-bottom: 1px solid rgba(2, 63, 131, 0.14);
-}
+/* No closing rule under the last cell of either column. The rules are there to
+   separate one row from the next, so a trailing one has nothing to separate. */
 /* Was twelve shadowed white tiles, each led by a rounded pill reading SUN or WED.
    A service list is a timetable, and a timetable wants ruled rows, not a dozen
    floating cards. Ruled rows also let the eye run down the day column. */
