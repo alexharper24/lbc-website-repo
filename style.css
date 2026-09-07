@@ -613,8 +613,7 @@ a { color: var(--accent); }
    for. Both sources are 4:3, so equal columns line up top and bottom with neither
    photo cropped. A 2:1 photo-band would have cut the church name off the sign. */
 .wayfinding {
-  max-width: var(--content-max); margin: 0 auto; padding: 0 24px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;
 }
 .wayfinding img {
   width: 100%; height: auto; display: block; border: 0; outline: 0;
@@ -637,6 +636,7 @@ a { color: var(--accent); }
 .gospel-icon {
   width: 52px; height: 52px; background: none; border-radius: 0;
   display: flex; align-items: flex-start; justify-content: flex-start;
+  padding-top: 3px;
 }
 .gospel-icon svg { width: 44px; height: 44px; stroke: currentColor; }
 .gi-navy { color: var(--primary); }
