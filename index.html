@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="img/sanctuary-choir-1200.jpg"
       imagesrcset="img/sanctuary-choir-sm.jpg 700w, img/sanctuary-choir-1200.jpg 1200w, img/sanctuary-choir.jpg 2000w"
       imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=46">
+<link rel="stylesheet" href="style.css?v=47">
 </head>
 <body>
 
@@ -151,36 +151,25 @@
 
 <section class="section" id="schedule">
   <div class="container container-mid">
-    <div class="section-header section-header-left">
+    <div class="section-header">
       <h2>When We Meet</h2>
-      <span class="wave-rule wave-rule-left"></span>
+      <span class="wave-rule"></span>
     </div>
-    <div class="schedule-grid">
-      <div class="schedule-col fade-up">
-        <h3>Weekly Services</h3>
-        <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Adult and Children's Bible Classes</span><span class="sched-when">10:00 am</span></div>
-        <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Morning Service</span><span class="sched-when">11:00 am</span></div>
-        <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Evening Service<span class="sched-note">2:00 pm on the 5th Sunday of the month</span></span><span class="sched-when">6:00 pm</span></div>
-        <div class="sched-row"><span class="sched-day">Wed</span><span class="sched-name">Bible Study and Children's Program</span><span class="sched-when">7:00 pm</span></div>
-      </div>
-      <div class="schedule-col fade-up">
-        <h3>Good to Know</h3>
-        <dl class="expect-list expect-list-stack">
-          <div>
-            <dt>Nursery</dt>
-            <dd>Every service, for age 2 and younger.</dd>
-          </div>
-          <div>
-            <dt>Toddler and Children's Church</dt>
-            <dd>During the Sunday morning service.</dd>
-          </div>
-          <div>
-            <dt>Church Office</dt>
-            <dd>Tuesday to Friday, 9:00 am to 4:00 pm.</dd>
-          </div>
-        </dl>
-        <p><a class="btn btn-outline" href="contact.html">Contact the Office</a></p>
-      </div>
+    <!-- One grid, not two columns: the cells are direct children so each grid row
+         takes the height of the taller side and the rules line up across. Source
+         order stays grouped by column, so it reads correctly stacked on a phone. -->
+    <div class="schedule-grid fade-up">
+      <h3 class="sched-head">Weekly Services</h3>
+      <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Adult and Children's Bible Classes</span><span class="sched-when">10:00 am</span></div>
+      <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Morning Service</span><span class="sched-when">11:00 am</span></div>
+      <div class="sched-row"><span class="sched-day">Sun</span><span class="sched-name">Evening Service<span class="sched-note">2:00 pm on the 5th Sunday of the month</span></span><span class="sched-when">6:00 pm</span></div>
+      <div class="sched-row"><span class="sched-day">Wed</span><span class="sched-name">Bible Study and Children's Program</span><span class="sched-when">7:00 pm</span></div>
+
+      <h3 class="sched-head">Good to Know</h3>
+      <div class="know-row"><span class="know-term">Nursery</span><span class="know-detail">Every service, for age 2 and younger.</span></div>
+      <div class="know-row"><span class="know-term">Toddler and Children's Church</span><span class="know-detail">During the Sunday morning service.</span></div>
+      <div class="know-row"><span class="know-term">Church Office</span><span class="know-detail">Tuesday to Friday, 9:00 am to 4:00 pm.</span></div>
+      <div class="know-row know-cta"><a class="btn btn-outline" href="contact.html">Contact the Office</a></div>
     </div>
   </div>
 </section>

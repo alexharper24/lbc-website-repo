@@ -343,13 +343,31 @@ a { color: var(--accent); }
 
 /* ---------- schedule ---------- */
 
-.schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-/* Rows keep their natural height rather than stretching to fill, so the timetable
-   stays tight. The trailing button is pushed to the bottom of its column instead,
-   which lines it up with the foot of whichever column is taller. */
-.schedule-col { display: flex; flex-direction: column; }
-.schedule-col h3 { margin-bottom: 16px; font-size: 1.3rem; flex: 0 0 auto; }
-.schedule-col > p:last-child { margin-top: auto; padding-top: 22px; }
+/* One grid rather than two independent columns. Every cell is a direct child, laid
+   out down column one then column two, so the two sides share their row heights and
+   the rules line up straight across. Two separate lists could never do that, because
+   each was measuring only itself. */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto repeat(4, auto);
+  grid-auto-flow: column;
+  column-gap: 40px;
+}
+.sched-head { font-size: 1.3rem; margin: 0 0 16px; }
+.know-row { border-top: 1px solid rgba(2, 63, 131, 0.14); padding: 13px 0; }
+.know-term {
+  display: block; font-family: var(--font-head); font-weight: 600;
+  color: var(--primary); font-size: 1.05rem; margin-bottom: 4px;
+}
+.know-detail { display: block; color: var(--text-light); font-size: 0.95rem; }
+/* the button shares its row with the last service, so centre it in whatever
+   height that row settles on */
+.know-cta { display: flex; align-items: center; }
+/* close both columns: the fifth and tenth children are the last cell in each */
+.schedule-grid > :nth-child(5), .schedule-grid > :nth-child(10) {
+  border-bottom: 1px solid rgba(2, 63, 131, 0.14);
+}
 /* Was twelve shadowed white tiles, each led by a rounded pill reading SUN or WED.
    A service list is a timetable, and a timetable wants ruled rows, not a dozen
    floating cards. Ruled rows also let the eye run down the day column. */
@@ -361,7 +379,6 @@ a { color: var(--accent); }
   padding: 13px 0; border-top: 1px solid rgba(2, 63, 131, 0.14);
 }
 .sched-note { display: block; font-size: 0.86rem; color: var(--text-light); margin-top: 4px; }
-.sched-row:last-of-type { border-bottom: 1px solid rgba(2, 63, 131, 0.14); }
 .sched-day {
   font-family: var(--font-head); font-weight: 600; color: var(--accent);
   font-size: 0.88rem; letter-spacing: 0.04em;
@@ -558,8 +575,6 @@ a { color: var(--accent); }
   color: var(--primary); margin-bottom: 6px;
 }
 .expect-list dd { margin: 0; color: var(--text-light); max-width: 46ch; }
-.expect-list-stack { grid-template-columns: 1fr; }
-.expect-list-stack > div:first-child { padding-top: 0; border-top: 0; }
 
 /* ---------- ministry cards ----------
    A photo header replaces the icon on these, so the padding moves off the card
@@ -833,7 +848,11 @@ a { color: var(--accent); }
   /* the middle measure is for centring on a wide screen; on a phone it would just
      throw away 30px of width against every other section */
   .container-mid { max-width: var(--content-max); }
-  .two-col, .schedule-grid, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
+  .two-col, .visit-grid, .contact-grid { grid-template-columns: 1fr; }
+  /* stacked, so the shared-row trick is switched off and the cells simply follow
+     source order: the whole timetable, then the whole Good to Know list */
+  .schedule-grid { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
+  .schedule-grid > .sched-head:not(:first-child) { margin-top: 30px; }
   /* stacked: nothing to match heights with, so let the photo be its natural shape */
   .two-col img { height: auto; }
   .pastor-grid { grid-template-columns: 1fr; gap: 24px; }
