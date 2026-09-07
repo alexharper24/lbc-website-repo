@@ -223,8 +223,10 @@ a { color: var(--accent); }
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background-image: linear-gradient(to bottom,
-    rgba(1, 30, 62, 0.78) 0%,
+  background-image: linear-gradient(180deg,
+    rgb(11, 38, 56) 0,
+    rgba(11, 38, 56, 0.92) 16px,
+    rgba(1, 30, 62, 0.78) 96px,
     rgba(1, 32, 66, 0.86) 100%);
 }
 .hero-content {
@@ -419,7 +421,11 @@ a { color: var(--accent); }
      Pexels licence, no attribution required, so nothing is owed on the page.
      Source and credit are recorded in the README. */
   background-image:
-    linear-gradient(rgba(1, 30, 62, 0.80) 0%, rgba(1, 32, 66, 0.88) 100%),
+    linear-gradient(180deg,
+      rgb(11, 38, 56) 0,
+      rgba(11, 38, 56, 0.94) 14px,
+      rgba(1, 30, 62, 0.82) 78px,
+      rgba(1, 32, 66, 0.88) 100%),
     url("img/ocean-hero.jpg");
   background-size: auto, cover;
   background-position: center, center 62%;
@@ -798,10 +804,11 @@ a { color: var(--accent); }
   .hero-copy h1 { font-size: 2.2rem; }
   /* the photo crops tighter on a phone, bringing brighter areas behind the text */
   .hero-overlay {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(1, 30, 62, 0.82) 0%,
-        rgba(1, 32, 66, 0.90) 100%);
+    background-image: linear-gradient(180deg,
+      rgb(11, 38, 56) 0,
+      rgba(11, 38, 56, 0.92) 16px,
+      rgba(1, 30, 62, 0.82) 96px,
+      rgba(1, 32, 66, 0.90) 100%);
   }
   .hero-bg { object-position: center 40%; }
   /* the middle measure is for centring on a wide screen; on a phone it would just
@@ -884,7 +891,8 @@ a { color: var(--accent); }
   .gospel-cta { background-color: var(--metal-dark) !important; }
   .hero-overlay {
     background-image:
-      linear-gradient(to bottom, rgba(1,30,62,0.78) 0%, rgba(1,32,66,0.86) 100%) !important;
+      linear-gradient(180deg, rgb(11,38,56) 0, rgba(11,38,56,0.92) 16px,
+        rgba(1,30,62,0.78) 96px, rgba(1,32,66,0.86) 100%) !important;
   }
   .site-footer { background-color: var(--primary-dark) !important; }
   .mobile-nav { background-color: var(--metal-dark) !important; }
@@ -898,6 +906,7 @@ a { color: var(--accent); }
 @media (prefers-color-scheme: dark) and (max-width: 900px) {
   .hero-overlay {
     background-image:
-      linear-gradient(to bottom, rgba(1,30,62,0.82) 0%, rgba(1,32,66,0.90) 100%) !important;
+      linear-gradient(180deg, rgb(11,38,56) 0, rgba(11,38,56,0.92) 16px,
+        rgba(1,30,62,0.82) 96px, rgba(1,32,66,0.90) 100%) !important;
   }
 }
