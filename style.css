@@ -414,9 +414,16 @@ a { color: var(--accent); }
   position: relative;
   overflow: hidden;
   background-color: var(--primary);
-  background-image: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(0, 0, 0, 0.10) 100%);
+  /* Real water rather than drawn lines. Open sea surface, no horizon or land, so it
+     reads as texture behind the heading instead of a picture competing with it.
+     Pexels licence, no attribution required, so nothing is owed on the page.
+     Source and credit are recorded in the README. */
+  background-image:
+    linear-gradient(rgba(1, 30, 62, 0.80) 0%, rgba(1, 32, 66, 0.88) 100%),
+    url("img/ocean-hero.jpg");
+  background-size: auto, cover;
+  background-position: center, center 62%;
+  background-repeat: no-repeat, no-repeat;
   padding: 48px 0;
   text-align: center;
 }

@@ -204,6 +204,15 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 
 ## Pending (the placeholder list)
 
+**Image sources and licences:**
+
+- `img/ocean-hero.jpg` is the texture behind every interior page hero. Cropped from
+  a Pexels photo by Lisa Fotios, https://www.pexels.com/photo/body-of-water-photography-734973/,
+  original 6000x4000, kept in gitignored `source-media/`. The Pexels licence allows
+  commercial use and requires no attribution, so the page owes no credit. Recorded
+  here so a future session does not have to rediscover it.
+- Every other photo on the site came from the church.
+
 **Blocking a real launch:**
 
 1. **REPLACE THIS — Formspree form ID** (`contact.html`, `action="https://formspree.io/f/YOUR_FORM_ID"`).
