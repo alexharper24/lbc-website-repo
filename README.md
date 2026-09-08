@@ -229,8 +229,10 @@ the cert issues, then the church cancels Tithe.ly **Sites** (Breeze and Tithe.ly
 
 3. **Sermons and streaming**: the page was removed as stale. Revisit only if they
    confirm a real YouTube channel or livestream, then rebuild a page around it.
-4. **Singles Retreat**: the old site had a broken `/Singles` nav link. Confirm whether
-   the retreat still needs a page (currently dropped).
+4. **Singles**: answered 2026-09-07. There is no standing singles ministry, but the
+   church holds a singles conference once a year. So no ministry card and no page:
+   it belongs in the homepage gallery as an event, alongside VBS and the revival.
+   Photos are in `source-media/singles conference*.jpg`, still unplaced.
 5. **Staff**: the old site listed Pastor Hon and Amber Biven (Admin). Pastor Hon and
    the youth leaders appear now; add Amber, or a full team page, if they want it.
    **Only "Jared" is recorded** for the youth leaders, because that is all that was
