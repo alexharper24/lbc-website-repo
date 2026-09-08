@@ -415,8 +415,11 @@ a { color: var(--accent); }
 /* ---------- gallery ---------- */
 
 .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-/* one photo carries the group instead of six identical tiles in lockstep */
+/* one photo carries the group instead of identical tiles in lockstep */
 .gallery-item-lead { grid-column: span 2; grid-row: span 2; }
+/* 11 tiles in 3 columns: the lead takes 4 cells, so 14 are used and the last row
+   would sit one short. The closing tile spans two to land the grid flush at 15. */
+.gallery-item-wide { grid-column: span 2; }
 .gallery-item-lead img { height: 100%; min-height: 500px; }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
@@ -861,6 +864,9 @@ a { color: var(--accent); }
   .gallery-item img { height: 180px; }
   .gallery-item-lead { grid-column: span 2; grid-row: auto; }
   .gallery-item-lead img { min-height: 0; height: 240px; }
+  /* two columns here, so the lead already spans the row and the closing tile must
+     stop spanning or the count goes odd again */
+  .gallery-item-wide { grid-column: auto; }
   .sched-row { grid-template-columns: 64px 1fr; gap: 6px 14px; }
   .sched-when { grid-column: 2; text-align: left; }
   /* One card per row, laid out sideways. Two columns on a phone left each card
