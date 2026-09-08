@@ -29,7 +29,7 @@
 <link rel="preload" as="image" href="img/sanctuary-choir-1200.jpg"
       imagesrcset="img/sanctuary-choir-sm.jpg 700w, img/sanctuary-choir-1200.jpg 1200w, img/sanctuary-choir.jpg 2000w"
       imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=50">
+<link rel="stylesheet" href="style.css?v=52">
 </head>
 <body>
 
@@ -178,7 +178,7 @@
   <div class="container container-mid">
     <div class="pastor-grid">
       <div class="fade-up">
-        <img class="pastor-portrait" src="img/pastor-hon.jpg" alt="Dr. Ronald A. Hon, Pastor of Lighthouse Baptist Church" width="880" height="990" loading="lazy">
+        <img class="pastor-portrait" src="img/pastor-and-mrs-hon.jpg" alt="Dr. Ronald A. Hon and his wife Cindy Hon" width="880" height="1100" loading="lazy">
       </div>
       <div class="fade-up">
         <h2>Our Pastor</h2>
@@ -197,51 +197,69 @@
       <h2>Life at Lighthouse</h2>
       <span class="wave-rule wave-rule-left"></span>
     </div>
+    <!-- Grouped by event. Each tile is the cover for an album; the album is listed
+         in data-album as "file|caption" pairs separated by ;;. The link href points
+         at the first full image, so with JavaScript off a click still opens a photo
+         rather than doing nothing. -->
     <div class="gallery-grid">
+
       <figure class="gallery-item gallery-item-lead fade-up">
-        <img src="img/vbs-games-thumb.jpg" alt="Children playing outdoor games during Vacation Bible School" width="700" height="525" loading="lazy">
-        <figcaption>Vacation Bible School</figcaption>
-      </figure>
-      <figure class="gallery-item fade-up">
-        <img src="img/tent-revival-thumb.jpg" alt="A service under the tent during a revival meeting" width="700" height="525" loading="lazy">
+        <a class="gallery-cover" href="img/lb-tent-revival.jpg"
+           data-album="img/lb-tent-revival.jpg|Tent revival;;img/lb-tent-revival-2.jpg|Tent revival;;img/lb-tent-pastors.jpg|Under the revival tent;;img/lb-tent-sunset.jpg|The tent at sunset"
+           aria-label="Tent revival, 4 photos. Opens a larger view.">
+          <img src="img/tent-revival-thumb.jpg" alt="A service under the tent during a revival meeting" width="700" height="525" loading="lazy">
+          <span class="gallery-count">4 photos</span>
+        </a>
         <figcaption>Tent revival</figcaption>
       </figure>
+
       <figure class="gallery-item fade-up">
-        <img src="img/ladies-thumb.jpg" alt="Ladies of Lighthouse Baptist Church together" width="700" height="525" loading="lazy">
-        <figcaption>Ladies' fellowship</figcaption>
-      </figure>
-      <figure class="gallery-item fade-up">
-        <img src="img/soul-winning-thumb.jpg" alt="Attendees seated at tables during a soul-winning conference" width="700" height="525" loading="lazy">
-        <figcaption>Soul-winning conference</figcaption>
-      </figure>
-      <figure class="gallery-item fade-up">
-        <img src="img/vbs-group-thumb.jpg" alt="Children and workers gathered together for Vacation Bible School" width="700" height="327" loading="lazy">
-        <figcaption>VBS together</figcaption>
-      </figure>
-      <figure class="gallery-item fade-up">
-        <img src="img/sanctuary-choir-thumb.jpg" alt="The choir singing during a Sunday service" width="700" height="525" loading="lazy">
-        <figcaption>Sunday worship</figcaption>
-      </figure>
-      <figure class="gallery-item fade-up">
-        <img src="img/singles-group-thumb.jpg" alt="About thirty people gathered on the platform for a group photo at the singles conference" width="820" height="480" loading="lazy">
+        <a class="gallery-cover" href="img/lb-singles-group.jpg"
+           data-album="img/lb-singles-group.jpg|Singles conference;;img/lb-singles-session.jpg|A session at the singles conference;;img/lb-singles-auditorium.jpg|Singles conference in the auditorium;;img/lb-singles-meal.jpg|A meal together at the conference"
+           aria-label="Singles conference, 4 photos. Opens a larger view.">
+          <img src="img/singles-group-thumb.jpg" alt="About thirty people gathered on the platform for a group photo at the singles conference" width="820" height="480" loading="lazy">
+          <span class="gallery-count">4 photos</span>
+        </a>
         <figcaption>Singles conference</figcaption>
       </figure>
+
       <figure class="gallery-item fade-up">
-        <img src="img/singles-session-thumb.jpg" alt="A speaker addressing people seated in the auditorium during the singles conference" width="820" height="480" loading="lazy">
-        <figcaption>A session at the singles conference</figcaption>
+        <a class="gallery-cover" href="img/vbs-games-thumb.jpg"
+           data-album="img/vbs-games-thumb.jpg|Vacation Bible School;;img/vbs-group-thumb.jpg|Children and workers together at Vacation Bible School;;img/vbs-program-thumb.jpg|The Vacation Bible School program"
+           aria-label="Vacation Bible School, 3 photos. Opens a larger view.">
+          <img src="img/vbs-games-thumb.jpg" alt="Children playing outdoor games during Vacation Bible School" width="700" height="525" loading="lazy">
+          <span class="gallery-count">3 photos</span>
+        </a>
+        <figcaption>Vacation Bible School</figcaption>
       </figure>
+
       <figure class="gallery-item fade-up">
-        <img src="img/singles-auditorium-thumb.jpg" alt="People seated in the auditorium listening during a singles conference session" width="820" height="480" loading="lazy">
-        <figcaption>Singles conference in the auditorium</figcaption>
+        <a class="gallery-cover" href="img/lb-sanctuary-choir.jpg"
+           data-album="img/lb-sanctuary-choir.jpg|Sunday worship"
+           aria-label="Sunday worship. Opens a larger view.">
+          <img src="img/sanctuary-choir-thumb.jpg" alt="The choir singing during a Sunday service" width="700" height="525" loading="lazy">
+        </a>
+        <figcaption>Sunday worship</figcaption>
       </figure>
+
       <figure class="gallery-item fade-up">
-        <img src="img/singles-meal-thumb.jpg" alt="People sharing a meal at long tables in the fellowship hall during the singles conference" width="820" height="480" loading="lazy">
-        <figcaption>A meal together at the conference</figcaption>
+        <a class="gallery-cover" href="img/lb-ladies.jpg"
+           data-album="img/lb-ladies.jpg|Ladies' fellowship"
+           aria-label="Ladies' fellowship. Opens a larger view.">
+          <img src="img/ladies-thumb.jpg" alt="Ladies of Lighthouse Baptist Church together" width="700" height="525" loading="lazy">
+        </a>
+        <figcaption>Ladies' fellowship</figcaption>
       </figure>
-      <figure class="gallery-item gallery-item-wide fade-up">
-        <img src="img/tent-revival-2-thumb.jpg" alt="Two men standing under the revival tent beside the pulpit, with hay bales and pumpkins" width="820" height="480" loading="lazy">
-        <figcaption>Under the revival tent</figcaption>
+
+      <figure class="gallery-item fade-up">
+        <a class="gallery-cover" href="img/lb-soul-winning.jpg"
+           data-album="img/lb-soul-winning.jpg|Soul-winning conference"
+           aria-label="Soul-winning conference. Opens a larger view.">
+          <img src="img/soul-winning-thumb.jpg" alt="Attendees seated at tables during a soul-winning conference" width="700" height="525" loading="lazy">
+        </a>
+        <figcaption>Soul-winning conference</figcaption>
       </figure>
+
     </div>
   </div>
 </section>
@@ -317,6 +335,17 @@
   </div>
 </footer>
 
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" class="lb-btn lb-close" onclick="lbClose()" aria-label="Close photo viewer">&#10005;</button>
+  <button type="button" class="lb-btn lb-prev" onclick="lbStep(-1)" aria-label="Previous photo">&#8249;</button>
+  <div class="lb-stage">
+    <img src="" alt="">
+    <p class="lb-caption"></p>
+    <p class="lb-counter"></p>
+  </div>
+  <button type="button" class="lb-btn lb-next" onclick="lbStep(1)" aria-label="Next photo">&#8250;</button>
+</div>
+
 <div id="comingSoonModal">
   <div class="modal-box">
     <h3>Coming Soon</h3>
@@ -375,6 +404,6 @@
 }
 </script>
 
-<script src="main.js?v=3"></script>
+<script src="main.js?v=4"></script>
 </body>
 </html>

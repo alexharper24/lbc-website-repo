@@ -164,3 +164,70 @@ function closeComingSoon() {
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(function (el) { io.observe(el); });
 })();
+
+/* ---------- gallery lightbox ----------
+   Covers are real links to the first full image, so this only ever enhances a page
+   that already works without it. Albums come from data-album as "file|caption"
+   pairs separated by ;;. */
+
+var lbAlbum = [];
+var lbIndex = 0;
+var lbReturnFocus = null;
+
+function lbRender() {
+  var box = document.getElementById('lightbox');
+  var item = lbAlbum[lbIndex];
+  box.querySelector('.lb-stage img').src = item.src;
+  box.querySelector('.lb-stage img').alt = item.cap;
+  box.querySelector('.lb-caption').textContent = item.cap;
+  box.querySelector('.lb-counter').textContent = (lbIndex + 1) + ' of ' + lbAlbum.length;
+  box.classList.toggle('lb-single', lbAlbum.length < 2);
+}
+
+function lbOpen(link) {
+  lbAlbum = (link.getAttribute('data-album') || '').split(';;').filter(Boolean).map(function (pair) {
+    var bits = pair.split('|');
+    return { src: bits[0], cap: bits[1] || '' };
+  });
+  if (!lbAlbum.length) return false;
+  lbIndex = 0;
+  lbReturnFocus = link;
+  var box = document.getElementById('lightbox');
+  lbRender();
+  box.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  box.querySelector('.lb-close').focus();
+  return true;
+}
+
+function lbClose() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  if (lbReturnFocus) { lbReturnFocus.focus(); lbReturnFocus = null; }
+}
+
+function lbStep(delta) {
+  if (lbAlbum.length < 2) return;
+  lbIndex = (lbIndex + delta + lbAlbum.length) % lbAlbum.length;
+  lbRender();
+}
+
+document.addEventListener('click', function (e) {
+  var link = e.target.closest ? e.target.closest('.gallery-cover') : null;
+  if (link && lbOpen(link)) e.preventDefault();
+});
+
+document.addEventListener('keydown', function (e) {
+  var box = document.getElementById('lightbox');
+  if (!box || !box.classList.contains('open')) return;
+  if (e.key === 'Escape') { lbClose(); }
+  else if (e.key === 'ArrowRight') { lbStep(1); }
+  else if (e.key === 'ArrowLeft') { lbStep(-1); }
+  else if (e.key === 'Tab') {
+    /* keep focus inside the overlay while it is open */
+    var focusable = box.querySelectorAll('button');
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+  }
+});
